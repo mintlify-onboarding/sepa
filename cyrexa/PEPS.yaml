@@ -1,0 +1,2552 @@
+openapi: 3.0.0
+info:
+  title: PEPS
+  description: peps
+  version: 1.0.0
+servers:
+  - url: 'https://gateway.cyrexa.com/peps'
+paths:
+  /getToken:
+    post:
+      tags:
+        - default
+      summary: Get token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+            example:
+              connection: service-account
+              device: Vlado-PC
+              grant_type: password
+              scope: openid service_account_id offline_access
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+              example:
+                id_token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6
+                access_token: >-
+                  eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik4wSTJRekJEUWpRM04wUkJSakJFUkRVM05qaEZNREF5T0VWRlJqWkRSVVl4TWtFMU5ERXdSUSJ9.eyJzZXJ2aWNlX2FjY291bnRfaWQiOiI5U0VQMDAxMDAwIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmFjY291bnRzLmRvd2pvbmVzLmNvbS8iLCJzdWIiOiJhdXRoMHw2MGYwZjRmY2QzNDE1NDE3NDNjNzkwOGIiLCJhdWQiOiJmZlRCcGsxU3ZJMTQ0STJnVVB0dFBkWjRGbkdxcHZkNyIsImlhdCI6MTYzNDYyOTkwNiwiZXhwIjoxNjM0NjY1OTA2fQ.iSO9UxiIE8pNce_2mQugk2yRVHq-4m77NeqDh0Z07PfuppU1EmdAmxLUKjJwJIN5JiZXI5AYGDglofvFbT0f8cgyMWNVpV2ph4BqkHLs16n_hzjhiqniUKDAQupU877iB8nL3nPiyds8_yxoeadijyOZHlXv4SOngGRRJWlwRlJ_2ng-2brNq0RKi889epqUdVySyrGplj17RpPppUd5waT6nX4I6Mu8aB9AHAZHYKdyiQ6I-jE5nEcWYI4EI0FOqSGrplYolFvHXgpedwCio5FNOi5pTis7iOW3NtqdB_GbPPwYbfng3p9unYgM75B9Z0ZpnWpBhA28BOBiKxnRNA
+                refresh_token: 4m77NeqDh0Z07PfuppU1EmdAmxLUKjJwJIN5JiZXI5AYGDglofvFb
+                token_type: bearear
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /getAccessToken:
+    post:
+      tags:
+        - default
+      summary: get data access token
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessTokenRequest'
+            example:
+              access_token: YlOZB0tiA3fU2HAs3yWfol92Fzo6BFOE
+              assertion: >-
+                eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik4wSTJRekJEUWpRM04wUkJSakJFUkRVM05qaEZNREF5T0VWRlJqWkRSVVl4TWtFMU5ERXdSUSJ9.eyJzZXJ2aWNlX2FjY291bnRfaWQiOiI5U0VQMDAxMDAwIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmFjY291bnRzLmRvd2pvbmVzLmNvbS8iLCJzdWIiOiJhdXRoMHw2MGYwZjRmY2QzNDE1NDE3NDNjNzkwOGIiLCJhdWQiOiJmZlRCcGsxU3ZJMTQ0STJnVVB0dFBkWjRGbkdxcHZkNyIsImlhdCI6MTYzNDYyOTkwNiwiZXhwIjoxNjM0NjY1OTA2fQ.iSO9UxiIE8pNce_2mQugk2yRVHq-4m77NeqDh0Z07PfuppU1EmdAmxLUKjJwJIN5JiZXI5AYGDglofvFbT0f8cgyMWNVpV2ph4BqkHLs16n_hzjhiqniUKDAQupU877iB8nL3nPiyds8_yxoeadijyOZHlXv4SOngGRRJWlwRlJ_2ng-2brNq0RKi889epqUdVySyrGplj17RpPppUd5waT6nX4I6Mu8aB9AHAZHYKdyiQ6I-jE5nEcWYI4EI0FOqSGrplYolFvHXgpedwCio5FNOi5pTis7iOW3NtqdB_GbPPwYbfng3p9unYgM75B9Z0ZpnWpBhA28BOBiKxnRNA
+              grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer'
+              scope: openid pib
+        required: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessTokenResponse'
+              example:
+                access_token: >-
+                  eyJhbGciOiJSUzI1NiIsImtpZCI6IjJEN0IwQTFERkJCNzlDRDFBQjM4NzNCMTcyODMyRjkxMENEQkRBREIiLCJ0eXAiOiJKV1QifQ.eyJwaWIiOnsiYXBjIjoiUk5DIiwiY3RjIjoiUCIsIm1hc3Rlcl9hcHBfaWQiOiJmZlRCcGsxU3ZJMTQ0STJnVVB0dFBkWjRGbkdxcHZkNyIsInNlcnZpY2VfYWNjb3VudF9pZCI6IjlTRVAwMDEwMDAiLCJlbmNyeXB0ZWRfdG9rZW4iOiJJMDBfSlVZVE1OQlZHNDJEU09CU0hBWFZJUjNWSUpWSEs0UlVKRTJWTTRMQkpaVFdLTktKTUYzV0czSlBJVkdGSVQyR09SVVdNWlpMTkozSE9TS01PSVpYUUtaUU1KV0ZPNUpUS0I1R0k1WkxJUkNGR1dMTElGR0NXWkxTSkJHRUVRMkpJWVlITVFaWElZWVhPV0tJUEZCWFFNQ0JGTjNXNDIyV05OS0cyUTJTSlpTR0UyREdMQTNWQ1JEVU1WSUZNTkI1STQifSwiaXNzIjoiaHR0cHM6Ly9hY2NvdW50cy5kb3dqb25lcy5jb20vb2F1dGgyL3YyIiwic3ViIjoiYXV0aDB8NjBmMGY0ZmNkMzQxNTQxNzQzYzc5MDhiIiwiYXVkIjoiZmZUQnBrMVN2STE0NEkyZ1VQdHRQZFo0Rm5HcXB2ZDciLCJhenAiOiJmZlRCcGsxU3ZJMTQ0STJnVVB0dFBkWjRGbkdxcHZkNyIsImlhdCI6MTY0NTc1MDU3NSwiZXhwIjoxNjQ1NzU0MTc1fQ.HvAevBsWIfBi-fz9OeXilB6HBHr4wSwOu6zCqtfMplh16yGC0pX9N1HJ6a5SwaYlhRq5HLzwoaKxllsj1hDTZAdM1afRejZBr0f7rM65BSeg9IJpBYgLTvvIZu8HYusLTKlA2Sr_tkKvlvvcYQG32FIGKelV0vPRJxm_qtLatVnscQUaDhugvZZ2sd_BKxpWEzDm2nPJnMT2Ag8-5y_prS8PzTruusZqxDoToF_JJsPg-2sPHy3_iueYqQhyN9zonWviraPGRBSrZ1i98tST78pPMDzhJ0pnUXlgZ-SCGln0Rv-M5N6XTzcL66kEEOuOJiUwI_Y468AURM6xPLrhPA
+                token_type: Bearer
+                expires_in: 3600
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /searchEntity:
+    post:
+      tags:
+        - default
+      summary: search entity
+      description: Returns Screening of Risk and Compliance
+      parameters:
+        - name: X-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: authentication token from getAcessToken response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScreeningRequestV1'
+            examples:
+              NameSearchExample:
+                $ref: '#/components/examples/NameSearchExample'
+              PersonNameExample:
+                $ref: '#/components/examples/PersonNameExample'
+              EntityNameExample:
+                $ref: '#/components/examples/EntityNameExample'
+              IDTypeSearchExample:
+                $ref: '#/components/examples/IDTypeSearchExample'
+          application/vnd.dowjones.dna.riskentities.v_1.1+json:
+            schema:
+              $ref: '#/components/schemas/ScreeningRequestV1'
+            examples:
+              NameSearchExample:
+                $ref: '#/components/examples/NameSearchExample'
+              PersonNameExample:
+                $ref: '#/components/examples/PersonNameExample'
+              EntityNameExample:
+                $ref: '#/components/examples/EntityNameExample'
+              IDTypeSearchExample:
+                $ref: '#/components/examples/IDTypeSearchExample'
+          application/vnd.dowjones.dna.riskentities.v_1.0+json:
+            schema:
+              $ref: '#/components/schemas/ScreeningRequest'
+            examples:
+              NameSearchExample:
+                $ref: '#/components/examples/NameSearchExampleV0'
+              PersonNameExample:
+                $ref: '#/components/examples/PersonNameExampleV0'
+              EntityNameExample:
+                $ref: '#/components/examples/EntityNameExampleV0'
+              IDTypeSearchExample:
+                $ref: '#/components/examples/IDTypeSearchExampleV0'
+        required: true
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScreeningResponseV1'
+            application/vnd.dowjones.dna.riskentities.v_1.1+json:
+              schema:
+                $ref: '#/components/schemas/ScreeningResponseV1'
+            application/vnd.dowjones.dna.riskentities.v_1.0+json:
+              schema:
+                $ref: '#/components/schemas/ScreeningResponse'
+        '400':
+          description: Bad request
+      security:
+        - bearerAuth: []
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /searchEntityScreening:
+    post:
+      tags:
+        - default
+      summary: screening
+      parameters:
+        - name: X-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: authentication token from getAcessToken response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                data:
+                  - id: '3431145'
+                    type: RiskEntities
+                    attributes:
+                      type: Person
+                      primary_name: 'Smith, John'
+                      title: ''
+                      country_territory_code: INDON
+                      country_territory_name: Indonesia
+                      gender: Male
+                      is_subsidiary: false
+                      score: '1.0'
+                      icon_hints:
+                        - SI-LT
+                      countries_territories:
+                        - type: Citizenship
+                          code: INDON
+                        - type: Resident of
+                          code: INDON
+                        - type: Country of Reported Allegation
+                          code: INDON
+                      date_of_birth:
+                        - day: ''
+                          month: ''
+                          year: '1992'
+                        - day: ''
+                          month: ''
+                          year: '1993'
+                      matched_criteria:
+                        date_of_birth: {}
+                        name:
+                          name: John Smith
+                        type:
+                          type: Precise
+                          is_linguistic_variation: false
+                          is_non_linguistic_variation: false
+                          is_structural_variation: false
+                  - id: '369665'
+                    type: RiskEntities
+                    attributes:
+                      type: Person
+                      primary_name: 'Smith, John Jane'
+                      title: See Previous Roles
+                      country_territory_code: USA
+                      country_territory_name: United States
+                      gender: Male
+                      is_subsidiary: false
+                      score: '1.0'
+                      icon_hints:
+                        - PEP
+                      countries_territories:
+                        - type: Citizenship
+                          code: USA
+                        - type: Resident of
+                          code: USA
+                        - type: Jurisdiction
+                          code: USA
+                        - type: Jurisdiction
+                          code: INTERNATIONAL
+                      date_of_birth:
+                        - day: '19'
+                          month: '8'
+                          year: '1946'
+                      matched_criteria:
+                        date_of_birth: {}
+                        name:
+                          name: John Jane Smith
+                        type:
+                          type: Precise
+                          is_linguistic_variation: false
+                          is_non_linguistic_variation: false
+                          is_structural_variation: false
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/getProfile/{profileid}':
+    get:
+      parameters:
+        - name: profileid
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+components:
+  schemas:
+    TokenRequest:
+      type: object
+      properties:
+        connection:
+          type: string
+          description: >-
+            Specifies the custom name of the Auth0 connection configured for the
+            service account users. Set its value to
+        device:
+          type: string
+          description: >-
+            Specifies if a Refresh token is requested. In Service Account
+            Integration, this parameter is mandatory when requesting a Refresh
+            token, scope=openid service_account_id offline_access
+        grant_type:
+          type: string
+          description: Specifies the type of access grant. Set its value to password.
+        scope:
+          type: string
+          description: >-
+            Specifies the scope returned in the AuthN ID token. You can specify
+            the value as follows:-  openid pib:- retrieves only the two AuthN
+            tokens OR  openid service_account_id offline_access:- retrieves the
+            two AuthN tokens and the Refresh token.
+    TokenResponse:
+      type: object
+      properties:
+        id_token:
+          type: string
+          description: token id for assertion.
+        access_token:
+          type: string
+          description: access token.
+        token_type:
+          type: string
+          description: token type (bearer).
+    AccessTokenRequest:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: >-
+            The access token obtained in the access_token response parameter of
+            getToken request
+        assertion:
+          type: string
+          description: >-
+            The AuthN ID token obtained in the id_token response parameter of
+            getToken request
+        client_id:
+          type: string
+          description: Specifies the unique Auth0-registered client identifier.
+        grant_type:
+          type: string
+          description: >-
+            Identifies the passed AuthN ID token as the grant type to get an
+            access token. Set its value to
+            urn:ietf:params:oauth:grant-type:jwt-bearer.
+        scope:
+          type: string
+          description: >-
+            Specifies the level of access that the client requests. Set its
+            value to openid pib
+    AccessTokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: access token for authentication
+        token_type:
+          type: string
+          description: access type (Bearer) .
+        expires_in:
+          type: string
+          description: token type (Bearer).
+    ScreeningRequestV1:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataV1'
+    DataV1:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RequestAttributesV1'
+    RequestAttributesV1:
+      type: object
+      properties:
+        filter_group_and:
+          $ref: '#/components/schemas/FilterGroupAndV1'
+        filter_group_or:
+          $ref: '#/components/schemas/FilterGroupOr'
+        paging:
+          $ref: '#/components/schemas/Paging'
+        screening_context:
+          type: string
+        sort:
+          $ref: '#/components/schemas/SortOptions'
+      description: Request's Attributes class
+    FilterGroupAndV1:
+      type: object
+      properties:
+        group_operator:
+          type: string
+          enum:
+            - AND
+        filters:
+          $ref: '#/components/schemas/FiltersV1'
+    FiltersV1:
+      type: object
+      properties:
+        search_keyword:
+          $ref: '#/components/schemas/SearchKeyword'
+        country_territory:
+          $ref: '#/components/schemas/CountryRequestV1'
+        identification:
+          $ref: '#/components/schemas/Identification'
+        entity_name:
+          $ref: '#/components/schemas/EntityName'
+        date_of_birth:
+          $ref: '#/components/schemas/DateOfBirth'
+        person_name:
+          $ref: '#/components/schemas/PersonName'
+        record_types:
+          type: array
+          items:
+            type: string
+            enum:
+              - Person
+              - Entity
+        content_set:
+          type: array
+          example:
+            - Watchlist
+            - Locations
+            - StateOwnedCompanies
+            - AdverseMedia
+          items:
+            type: string
+            enum:
+              - Watchlist
+              - AdverseMedia
+              - StateOwnedCompanies
+              - HighRiskFactors
+              - Locations
+    CountryRequestV1:
+      type: object
+      properties:
+        country_territory_types:
+          $ref: '#/components/schemas/CountryTerritoryTypes'
+        countries_territories:
+          $ref: '#/components/schemas/Countries'
+    ScreeningRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Data'
+    Data:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RequestAttributes'
+    RequestAttributes:
+      type: object
+      properties:
+        filter_group_and:
+          $ref: '#/components/schemas/FilterGroupAnd'
+        filter_group_or:
+          $ref: '#/components/schemas/FilterGroupOr'
+        paging:
+          $ref: '#/components/schemas/Paging'
+        screening_context:
+          type: string
+        sort:
+          $ref: '#/components/schemas/SortOptions'
+      description: Request's Attributes class
+    FilterGroupAnd:
+      type: object
+      properties:
+        group_operator:
+          type: string
+          enum:
+            - AND
+        filters:
+          $ref: '#/components/schemas/Filters'
+    FilterGroupOr:
+      type: object
+      properties:
+        group_operator:
+          type: string
+          enum:
+            - OR
+        filters:
+          $ref: '#/components/schemas/FiltersLists'
+    Paging:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int32
+        limit:
+          type: integer
+          format: int32
+          example: 10
+    Filters:
+      type: object
+      properties:
+        search_keyword:
+          $ref: '#/components/schemas/SearchKeyword'
+        country:
+          $ref: '#/components/schemas/CountryRequest'
+        identification:
+          $ref: '#/components/schemas/Identification'
+        entity_name:
+          $ref: '#/components/schemas/EntityName'
+        date_of_birth:
+          $ref: '#/components/schemas/DateOfBirth'
+        person_name:
+          $ref: '#/components/schemas/PersonName'
+        record_types:
+          type: array
+          items:
+            type: string
+            enum:
+              - Person
+              - Entity
+        content_set:
+          type: array
+          example:
+            - Watchlist
+            - Locations
+            - StateOwnedCompanies
+            - HighRiskFactors
+            - AdverseMedia
+          items:
+            type: string
+            enum:
+              - Watchlist
+              - AdverseMedia
+              - StateOwnedCompanies
+              - HighRiskFactors
+              - Locations
+    FiltersLists:
+      type: object
+      properties:
+        sanctions_list:
+          $ref: '#/components/schemas/SanctionsList'
+        content_category:
+          $ref: '#/components/schemas/ContentCategory'
+        other_official_list:
+          $ref: '#/components/schemas/OtherOfficialList'
+        other_exclusion_list:
+          $ref: '#/components/schemas/OtherExclusionList'
+        state_ownership:
+          $ref: '#/components/schemas/StateOwnership'
+        occupation_category:
+          $ref: '#/components/schemas/OccupationCategory'
+        hrf_category:
+          $ref: '#/components/schemas/HrfCategory'
+    SearchKeyword:
+      type: object
+      properties:
+        scope:
+          type: array
+          items:
+            type: string
+            enum:
+              - Name
+              - ProfileNotes
+              - OccupationTitle
+        type:
+          type: string
+          enum:
+            - Precise
+            - Near
+            - Broad
+        text:
+          type: string
+    CountryRequest:
+      type: object
+      properties:
+        country_types:
+          $ref: '#/components/schemas/CountryTypes'
+        countries:
+          $ref: '#/components/schemas/Countries'
+    Identification:
+      type: object
+      properties:
+        number:
+          type: string
+        type:
+          type: integer
+          description: >-
+            One of the identification types. Check the IDTYPE list on taxonomy
+            for values
+          format: int32
+    EntityName:
+      type: object
+      properties:
+        full_name:
+          type: string
+        search_type:
+          type: string
+          enum:
+            - Precise
+            - Near
+            - Broad
+    DateOfBirth:
+      type: object
+      properties:
+        date:
+          $ref: '#/components/schemas/DateWithStrict'
+        year_range:
+          $ref: '#/components/schemas/YearRange'
+        is_deceased_excluded:
+          type: boolean
+          default: false
+    PersonName:
+      type: object
+      properties:
+        last_name:
+          type: string
+        middle_name:
+          type: string
+        first_name:
+          type: string
+        search_type:
+          type: string
+          enum:
+            - Precise
+            - Near
+            - Broad
+    SanctionsList:
+      type: object
+      properties:
+        codes:
+          type: array
+          example:
+            - AE-CAE
+            - AR-MOJDH
+          items:
+            type: string
+        last_review_date:
+          $ref: '#/components/schemas/LastReviewDate'
+        exclude_codes:
+          type: array
+          example: []
+          items:
+            type: string
+        is_all_excluded:
+          type: boolean
+          default: false
+        operator:
+          $ref: '#/components/schemas/Operator'
+      description: Filter to include or exclude codes from SanctionLists (SAN)
+    ContentCategory:
+      type: object
+      properties:
+        special_interest:
+          $ref: '#/components/schemas/SpecialInterest'
+        adverse_media:
+          $ref: '#/components/schemas/AdverseMedia'
+        location:
+          $ref: '#/components/schemas/Location'
+    OtherOfficialList:
+      type: object
+      properties:
+        codes:
+          type: array
+          example:
+            - ADB
+            - AE-DFSA
+          items:
+            type: string
+        last_review_date:
+          $ref: '#/components/schemas/LastReviewDate'
+        exclude_codes:
+          type: array
+          example: []
+          items:
+            type: string
+        is_all_excluded:
+          type: boolean
+          default: false
+        operator:
+          $ref: '#/components/schemas/Operator'
+      description: Filter to include or exclude codes from OtherOfficialLists (OOL)
+    OtherExclusionList:
+      type: object
+      properties:
+        codes:
+          type: array
+          example:
+            - AFDB
+            - BR-CGU
+          items:
+            type: string
+        last_review_date:
+          $ref: '#/components/schemas/LastReviewDate'
+        exclude_codes:
+          type: array
+          example: []
+          items:
+            type: string
+        is_all_excluded:
+          type: boolean
+          default: false
+        operator:
+          $ref: '#/components/schemas/Operator'
+      description: Filter to include or exclude codes from OtherExclusionLists (OEL)
+    StateOwnership:
+      type: object
+      properties:
+        code:
+          type: string
+          example: '5'
+        is_unknown_excluded:
+          type: boolean
+          default: false
+        is_all_excluded:
+          type: boolean
+          default: false
+      description: Filter to include code from StateOwnerships (SOC)
+    OccupationCategory:
+      type: object
+      properties:
+        codes:
+          type: array
+          example:
+            - '18'
+            - '6'
+          items:
+            type: string
+        last_review_date:
+          $ref: '#/components/schemas/LastReviewDate'
+        exclude_codes:
+          type: array
+          example: []
+          items:
+            type: string
+        is_all_excluded:
+          type: boolean
+          default: false
+        is_adsr_excluded:
+          type: boolean
+          default: false
+        operator:
+          $ref: '#/components/schemas/Operator'
+      description: Filter to include or exclude codes from OccupationCategories list
+    HrfCategory:
+      type: object
+      properties:
+        codes:
+          type: array
+          example:
+            - '1011'
+          items:
+            type: string
+        last_review_date:
+          $ref: '#/components/schemas/LastReviewDate'
+        exclude_codes:
+          type: array
+          example: []
+          items:
+            type: string
+        is_all_excluded:
+          type: boolean
+          default: false
+        operator:
+          $ref: '#/components/schemas/Operator'
+      description: Filter to include or exclude codes from HighRiskFactor list
+    CountryTypes:
+      type: object
+      properties:
+        country_types:
+          type: array
+          items:
+            type: string
+        operator:
+          $ref: '#/components/schemas/Operator'
+      description: Filter to include or exclude codes from CountryType list
+    CountryTerritoryTypes:
+      type: object
+      properties:
+        country_territory_types:
+          type: array
+          example:
+            - '3'
+          items:
+            type: string
+        operator:
+          $ref: '#/components/schemas/Operator'
+      description: Filter to include or exclude codes from CountryTerritoryType list
+    Countries:
+      type: object
+      properties:
+        codes:
+          type: array
+          example:
+            - USA
+            - GFR
+          items:
+            type: string
+        exclude_codes:
+          type: array
+          example: []
+          items:
+            type: string
+        operator:
+          type: string
+          enum:
+            - OR
+      description: Filter to include or exclude codes from CountryTerritory list
+    Date:
+      type: object
+      properties:
+        month:
+          type: string
+          example: '1'
+        year:
+          type: string
+          example: '2020'
+        day:
+          type: string
+          example: '1'
+    DateWithStrict:
+      type: object
+      properties:
+        month:
+          type: string
+          example: '1'
+        year:
+          type: string
+          example: '2020'
+        is_strict_match:
+          type: boolean
+          default: false
+        day:
+          type: string
+          example: '1'
+    YearRange:
+      type: object
+      properties:
+        from:
+          type: string
+          example: '1'
+        to:
+          type: string
+          example: '2'
+    LastReviewDate:
+      type: object
+      properties:
+        from:
+          $ref: '#/components/schemas/Date'
+        to:
+          $ref: '#/components/schemas/Date'
+    SpecialInterest:
+      type: object
+      properties:
+        codes:
+          type: array
+          example:
+            - '1001'
+            - '1002'
+          items:
+            type: string
+        last_review_date:
+          $ref: '#/components/schemas/LastReviewDate'
+        exclude_codes:
+          type: array
+          example: []
+          items:
+            type: string
+        is_all_excluded:
+          type: boolean
+          default: false
+        operator:
+          $ref: '#/components/schemas/Operator'
+      description: Filter to include or exclude codes from SpecialInterestCategories list
+    AdverseMedia:
+      type: object
+      properties:
+        codes:
+          type: array
+          example:
+            - '33'
+            - '34'
+          items:
+            type: string
+        last_review_date:
+          $ref: '#/components/schemas/LastReviewDate'
+        exclude_codes:
+          type: array
+          example: []
+          items:
+            type: string
+        is_all_excluded:
+          type: boolean
+          default: false
+        operator:
+          $ref: '#/components/schemas/Operator'
+      description: Filter to include or exclude codes from AdverseMediaCategories list
+    Location:
+      type: object
+      properties:
+        codes:
+          type: array
+          example:
+            - '121'
+          items:
+            type: string
+        last_review_date:
+          $ref: '#/components/schemas/LastReviewDate'
+        exclude_codes:
+          type: array
+          example: []
+          items:
+            type: string
+        is_all_excluded:
+          type: boolean
+          default: false
+        operator:
+          $ref: '#/components/schemas/Operator'
+      description: Filter to include or exclude codes from Locations list
+    ScreeningResponseV1:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatumV1'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    DatumV1:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/AttributesResponseV1'
+    AttributesResponseV1:
+      type: object
+      properties:
+        type:
+          type: string
+        primary_name:
+          type: string
+        title:
+          type: string
+        country_territory_code:
+          type: string
+        country_territory_name:
+          type: string
+        gender:
+          type: string
+        is_subsidiary:
+          type: boolean
+          default: false
+        score:
+          type: string
+        matched_criteria:
+          $ref: '#/components/schemas/MatchedCriteria'
+        date_of_birth:
+          type: array
+          items:
+            $ref: '#/components/schemas/Date'
+        icon_hints:
+          type: array
+          items:
+            type: string
+        countries_territories:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/CountryResponse'
+              - $ref: '#/components/schemas/CountryResponseIso'
+    ScreeningResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Datum'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    Datum:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/AttributesResponse'
+    Meta:
+      type: object
+      properties:
+        score_time_ms:
+          type: string
+        total:
+          type: string
+        last:
+          type: string
+        count:
+          type: string
+        screening_context:
+          type: string
+        overall_time_ms:
+          type: string
+        search_time_ms:
+          type: string
+        first:
+          type: string
+    AttributesResponse:
+      type: object
+      properties:
+        type:
+          type: string
+        primary_name:
+          type: string
+        title:
+          type: string
+        country_code:
+          type: string
+        country_name:
+          type: string
+        gender:
+          type: string
+        is_subsidiary:
+          type: boolean
+          default: false
+        score:
+          type: string
+        matched_criteria:
+          $ref: '#/components/schemas/MatchedCriteria'
+        date_of_birth:
+          type: array
+          items:
+            $ref: '#/components/schemas/Date'
+        icon_hints:
+          type: array
+          items:
+            type: string
+        countries:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/CountryResponseIso'
+              - $ref: '#/components/schemas/CountryResponse'
+    MatchedCriteria:
+      type: object
+      properties:
+        date_of_birth:
+          $ref: '#/components/schemas/Date'
+        name:
+          $ref: '#/components/schemas/MatchedNameVo'
+        type:
+          $ref: '#/components/schemas/MatchedType'
+    CountryResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        type:
+          type: string
+    CountryResponseIso:
+      type: object
+      properties:
+        iso_alpha2:
+          type: string
+        iso_alpha3:
+          type: string
+        code:
+          type: string
+        type:
+          type: string
+    MatchedNameVo:
+      type: object
+      properties:
+        name_type:
+          type: string
+        name:
+          type: string
+    MatchedType:
+      type: object
+      properties:
+        is_structural_variation:
+          type: boolean
+          default: false
+        is_non_linguistic_variation:
+          type: boolean
+          default: false
+        type:
+          type: string
+        is_linguistic_variation:
+          type: boolean
+          default: false
+    Operator:
+      type: string
+      enum:
+        - AND
+        - OR
+    SortOptions:
+      type: string
+      enum:
+        - Name
+        - Country
+        - Title
+        - Subsidiary
+        - PercentMatch
+  examples:
+    NameSearchExample:
+      value:
+        data:
+          attributes:
+            filter_group_and:
+              group_operator: AND
+              filters:
+                search_keyword:
+                  scope:
+                    - Name
+                  type: Precise
+                  text: keyword to search
+                country_territory:
+                  country_territory_types:
+                    country_territory_types:
+                      - '3'
+                    operator: AND
+                  countries_territories:
+                    codes:
+                      - USA
+                      - GFR
+                    exclude_codes: []
+                    operator: OR
+                date_of_birth:
+                  date:
+                    month: '1'
+                    year: '2020'
+                    is_strict_match: false
+                    day: '1'
+                  year_range:
+                    from: '1'
+                    to: '1'
+                  is_deceased_excluded: false
+                record_types:
+                  - Person
+                content_set:
+                  - Watchlist
+                  - Locations
+                  - StateOwnedCompanies
+                  - AdverseMedia
+            filter_group_or:
+              group_operator: OR
+              filters:
+                sanctions_list:
+                  codes:
+                    - AE-CAE
+                    - AR-MOJDH
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                content_category:
+                  special_interest:
+                    codes:
+                      - '1001'
+                      - '1002'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  adverse_media:
+                    codes:
+                      - '33'
+                      - '34'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  location:
+                    codes:
+                      - '121'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                other_official_list:
+                  codes:
+                    - ADB
+                    - AE-DFSA
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                other_exclusion_list:
+                  codes:
+                    - AFDB
+                    - BR-CGU
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                state_ownership:
+                  code: '5'
+                  is_unknown_excluded: false
+                  is_all_excluded: false
+                occupation_category:
+                  codes:
+                    - '18'
+                    - '6'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                hrf_category:
+                  codes:
+                    - '1011'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+            paging:
+              offset: 0
+              limit: 10
+            sort: PercentMatch
+    PersonNameExample:
+      value:
+        data:
+          attributes:
+            filter_group_and:
+              group_operator: AND
+              filters:
+                person_name:
+                  first_name: John
+                  search_type: Broad
+                country_territory:
+                  country_territory_types:
+                    country_territory_types:
+                      - '3'
+                    operator: AND
+                  countries_territories:
+                    codes:
+                      - USA
+                      - GFR
+                    exclude_codes: []
+                    operator: OR
+                date_of_birth:
+                  date:
+                    month: '1'
+                    year: '2020'
+                    is_strict_match: false
+                    day: '1'
+                  year_range:
+                    from: '1'
+                    to: '1'
+                  is_deceased_excluded: false
+                record_types:
+                  - Person
+                content_set:
+                  - Watchlist
+                  - Locations
+                  - StateOwnedCompanies
+                  - AdverseMedia
+            filter_group_or:
+              group_operator: OR
+              filters:
+                sanctions_list:
+                  codes:
+                    - AE-CAE
+                    - AR-MOJDH
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                content_category:
+                  special_interest:
+                    codes:
+                      - '1001'
+                      - '1002'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  adverse_media:
+                    codes:
+                      - '33'
+                      - '34'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  location:
+                    codes:
+                      - '121'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                other_official_list:
+                  codes:
+                    - ADB
+                    - AE-DFSA
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                other_exclusion_list:
+                  codes:
+                    - AFDB
+                    - BR-CGU
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                state_ownership:
+                  code: '5'
+                  is_unknown_excluded: false
+                  is_all_excluded: false
+                occupation_category:
+                  codes:
+                    - '18'
+                    - '6'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                hrf_category:
+                  codes:
+                    - '1011'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+            paging:
+              offset: 0
+              limit: 10
+            sort: PercentMatch
+    EntityNameExample:
+      value:
+        data:
+          attributes:
+            filter_group_and:
+              group_operator: AND
+              filters:
+                entity_name:
+                  full_name: Acme
+                  search_type: Broad
+                country_territory:
+                  country_territory_types:
+                    country_territory_types:
+                      - '3'
+                    operator: AND
+                  countries_territories:
+                    codes:
+                      - USA
+                      - GFR
+                    exclude_codes: []
+                    operator: OR
+                date_of_birth:
+                  date:
+                    month: '1'
+                    year: '2020'
+                    is_strict_match: false
+                    day: '1'
+                  year_range:
+                    from: '1'
+                    to: '1'
+                  is_deceased_excluded: false
+                record_types:
+                  - Person
+                content_set:
+                  - Watchlist
+                  - Locations
+                  - StateOwnedCompanies
+                  - AdverseMedia
+            filter_group_or:
+              group_operator: OR
+              filters:
+                sanctions_list:
+                  codes:
+                    - AE-CAE
+                    - AR-MOJDH
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                content_category:
+                  special_interest:
+                    codes:
+                      - '1001'
+                      - '1002'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  adverse_media:
+                    codes:
+                      - '33'
+                      - '34'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  location:
+                    codes:
+                      - '121'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                other_official_list:
+                  codes:
+                    - ADB
+                    - AE-DFSA
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                other_exclusion_list:
+                  codes:
+                    - AFDB
+                    - BR-CGU
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                state_ownership:
+                  code: '5'
+                  is_unknown_excluded: false
+                  is_all_excluded: false
+                occupation_category:
+                  codes:
+                    - '18'
+                    - '6'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                hrf_category:
+                  codes:
+                    - '1011'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+            paging:
+              offset: 0
+              limit: 10
+            sort: PercentMatch
+    IDTypeSearchExample:
+      value:
+        data:
+          attributes:
+            filter_group_and:
+              group_operator: AND
+              filters:
+                identification:
+                  number: '123456'
+                  type: 1
+                country_territory:
+                  country_territory_types:
+                    country_territory_types:
+                      - '3'
+                    operator: AND
+                  countries_territories:
+                    codes:
+                      - USA
+                      - GFR
+                    exclude_codes: []
+                    operator: OR
+                date_of_birth:
+                  date:
+                    month: '1'
+                    year: '2020'
+                    is_strict_match: false
+                    day: '1'
+                  year_range:
+                    from: '1'
+                    to: '1'
+                  is_deceased_excluded: false
+                record_types:
+                  - Person
+                content_set:
+                  - Watchlist
+                  - Locations
+                  - StateOwnedCompanies
+                  - AdverseMedia
+            filter_group_or:
+              group_operator: OR
+              filters:
+                sanctions_list:
+                  codes:
+                    - AE-CAE
+                    - AR-MOJDH
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                content_category:
+                  special_interest:
+                    codes:
+                      - '1001'
+                      - '1002'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  adverse_media:
+                    codes:
+                      - '33'
+                      - '34'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  location:
+                    codes:
+                      - '121'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                other_official_list:
+                  codes:
+                    - ADB
+                    - AE-DFSA
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                other_exclusion_list:
+                  codes:
+                    - AFDB
+                    - BR-CGU
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                state_ownership:
+                  code: '5'
+                  is_unknown_excluded: false
+                  is_all_excluded: false
+                occupation_category:
+                  codes:
+                    - '18'
+                    - '6'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                hrf_category:
+                  codes:
+                    - '1011'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+            paging:
+              offset: 0
+              limit: 10
+            sort: PercentMatch
+    NameSearchExampleV0:
+      value:
+        data:
+          attributes:
+            filter_group_and:
+              group_operator: AND
+              filters:
+                search_keyword:
+                  scope:
+                    - Name
+                  type: Precise
+                  text: keyword to search
+                country:
+                  country_types:
+                    country_types:
+                      - '3'
+                    operator: AND
+                  countries:
+                    codes:
+                      - USA
+                      - GFR
+                    exclude_codes: []
+                    operator: OR
+                date_of_birth:
+                  date:
+                    month: '1'
+                    year: '2020'
+                    is_strict_match: false
+                    day: '1'
+                  year_range:
+                    from: '1'
+                    to: '1'
+                  is_deceased_excluded: false
+                record_types:
+                  - Person
+                content_set:
+                  - Watchlist
+                  - Locations
+                  - StateOwnedCompanies
+                  - AdverseMedia
+            filter_group_or:
+              group_operator: OR
+              filters:
+                sanctions_list:
+                  codes:
+                    - AE-CAE
+                    - AR-MOJDH
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                content_category:
+                  special_interest:
+                    codes:
+                      - '1001'
+                      - '1002'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  adverse_media:
+                    codes:
+                      - '33'
+                      - '34'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  location:
+                    codes:
+                      - '121'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                other_official_list:
+                  codes:
+                    - ADB
+                    - AE-DFSA
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                other_exclusion_list:
+                  codes:
+                    - AFDB
+                    - BR-CGU
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                state_ownership:
+                  code: '5'
+                  is_unknown_excluded: false
+                  is_all_excluded: false
+                occupation_category:
+                  codes:
+                    - '18'
+                    - '6'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                hrf_category:
+                  codes:
+                    - '1011'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+            paging:
+              offset: 0
+              limit: 10
+            sort: PercentMatch
+    PersonNameExampleV0:
+      value:
+        data:
+          attributes:
+            filter_group_and:
+              group_operator: AND
+              filters:
+                person_name:
+                  first_name: John
+                  search_type: Broad
+                country:
+                  country_types:
+                    country_types:
+                      - '3'
+                    operator: AND
+                  countries:
+                    codes:
+                      - USA
+                      - GFR
+                    exclude_codes: []
+                    operator: OR
+                date_of_birth:
+                  date:
+                    month: '1'
+                    year: '2020'
+                    is_strict_match: false
+                    day: '1'
+                  year_range:
+                    from: '1'
+                    to: '1'
+                  is_deceased_excluded: false
+                record_types:
+                  - Person
+                content_set:
+                  - Watchlist
+                  - Locations
+                  - StateOwnedCompanies
+                  - AdverseMedia
+            filter_group_or:
+              group_operator: OR
+              filters:
+                sanctions_list:
+                  codes:
+                    - AE-CAE
+                    - AR-MOJDH
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                content_category:
+                  special_interest:
+                    codes:
+                      - '1001'
+                      - '1002'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  adverse_media:
+                    codes:
+                      - '33'
+                      - '34'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  location:
+                    codes:
+                      - '121'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                other_official_list:
+                  codes:
+                    - ADB
+                    - AE-DFSA
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                other_exclusion_list:
+                  codes:
+                    - AFDB
+                    - BR-CGU
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                state_ownership:
+                  code: '5'
+                  is_unknown_excluded: false
+                  is_all_excluded: false
+                occupation_category:
+                  codes:
+                    - '18'
+                    - '6'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                hrf_category:
+                  codes:
+                    - '1011'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+            paging:
+              offset: 0
+              limit: 10
+            sort: PercentMatch
+    EntityNameExampleV0:
+      value:
+        data:
+          attributes:
+            filter_group_and:
+              group_operator: AND
+              filters:
+                entity_name:
+                  full_name: Acme
+                  search_type: Broad
+                country:
+                  country_types:
+                    country_types:
+                      - '3'
+                    operator: AND
+                  countries:
+                    codes:
+                      - USA
+                      - GFR
+                    exclude_codes: []
+                    operator: OR
+                date_of_birth:
+                  date:
+                    month: '1'
+                    year: '2020'
+                    is_strict_match: false
+                    day: '1'
+                  year_range:
+                    from: '1'
+                    to: '1'
+                  is_deceased_excluded: false
+                record_types:
+                  - Entity
+                content_set:
+                  - Watchlist
+                  - Locations
+                  - StateOwnedCompanies
+                  - AdverseMedia
+            filter_group_or:
+              group_operator: OR
+              filters:
+                sanctions_list:
+                  codes:
+                    - AE-CAE
+                    - AR-MOJDH
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                content_category:
+                  special_interest:
+                    codes:
+                      - '1001'
+                      - '1002'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  adverse_media:
+                    codes:
+                      - '33'
+                      - '34'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  location:
+                    codes:
+                      - '121'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                other_official_list:
+                  codes:
+                    - ADB
+                    - AE-DFSA
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                other_exclusion_list:
+                  codes:
+                    - AFDB
+                    - BR-CGU
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                state_ownership:
+                  code: '5'
+                  is_unknown_excluded: false
+                  is_all_excluded: false
+                occupation_category:
+                  codes:
+                    - '18'
+                    - '6'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                hrf_category:
+                  codes:
+                    - '1011'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+            paging:
+              offset: 0
+              limit: 10
+            sort: PercentMatch
+    IDTypeSearchExampleV0:
+      value:
+        data:
+          attributes:
+            filter_group_and:
+              group_operator: AND
+              filters:
+                identification:
+                  number: '123456'
+                  type: 1
+                country:
+                  country_types:
+                    country_types:
+                      - '3'
+                    operator: AND
+                  countries:
+                    codes:
+                      - USA
+                      - GFR
+                    exclude_codes: []
+                    operator: OR
+                date_of_birth:
+                  date:
+                    month: '1'
+                    year: '2020'
+                    is_strict_match: false
+                    day: '1'
+                  year_range:
+                    from: '1'
+                    to: '1'
+                  is_deceased_excluded: false
+                record_types:
+                  - Person
+                content_set:
+                  - Watchlist
+                  - Locations
+                  - StateOwnedCompanies
+                  - AdverseMedia
+            filter_group_or:
+              group_operator: OR
+              filters:
+                sanctions_list:
+                  codes:
+                    - AE-CAE
+                    - AR-MOJDH
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                content_category:
+                  special_interest:
+                    codes:
+                      - '1001'
+                      - '1002'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  adverse_media:
+                    codes:
+                      - '33'
+                      - '34'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                  location:
+                    codes:
+                      - '121'
+                    last_review_date:
+                      from:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                      to:
+                        month: '1'
+                        year: '2020'
+                        day: '1'
+                    exclude_codes: []
+                    is_all_excluded: false
+                    operator: AND
+                other_official_list:
+                  codes:
+                    - ADB
+                    - AE-DFSA
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                other_exclusion_list:
+                  codes:
+                    - AFDB
+                    - BR-CGU
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                state_ownership:
+                  code: '5'
+                  is_unknown_excluded: false
+                  is_all_excluded: false
+                occupation_category:
+                  codes:
+                    - '18'
+                    - '6'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+                hrf_category:
+                  codes:
+                    - '1011'
+                  last_review_date:
+                    from:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                    to:
+                      month: '1'
+                      year: '2020'
+                      day: '1'
+                  exclude_codes: []
+                  is_all_excluded: false
+                  operator: AND
+            paging:
+              offset: 0
+              limit: 10
+            sort: PercentMatch
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    default:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'https://test.com'
+          scopes: {}
+x-wso2-auth-header: Authorization
+x-wso2-cors:
+  corsConfigurationEnabled: true
+  accessControlAllowOrigins:
+    - '*'
+  accessControlAllowCredentials: false
+  accessControlAllowHeaders:
+    - authorization
+    - Access-Control-Allow-Origin
+    - Content-Type
+    - SOAPAction
+    - apikey
+    - Internal-Key
+  accessControlAllowMethods:
+    - GET
+    - PUT
+    - POST
+    - DELETE
+    - PATCH
+    - OPTIONS
+x-wso2-production-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/peps'
+  type: http
+x-wso2-sandbox-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/peps'
+  type: http
+x-wso2-basePath: /peps/1.0.0
+x-wso2-transports:
+  - http
+  - https
+x-wso2-response-cache:
+  enabled: false
+  cacheTimeoutInSeconds: 300

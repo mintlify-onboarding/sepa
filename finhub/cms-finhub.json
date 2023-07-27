@@ -1,0 +1,2337 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "CMS",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://gateway.finhub.cloud/cms/1.0.0"
+    },
+    {
+      "url": "http://gateway.finhub.cloud/cms/1.0.0"
+    }
+  ],
+  "security": [
+    {
+      "default": []
+    }
+  ],
+  "paths": {
+    "/issuer/{institutionId}": {
+      "get": {
+        "operationId": "getIssuerInstitutionid",
+        "parameters": [
+          {
+            "name": "institutionId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      },
+      "put": {
+        "operationId": "putIssuerInstitutionid",
+        "parameters": [
+          {
+            "name": "institutionId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IssuerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/issuer": {
+      "post": {
+        "operationId": "postIssuer",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IssuerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/cardholder/{realId}": {
+      "put": {
+        "operationId": "putCardholderRealid",
+        "parameters": [
+          {
+            "name": "realId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardholderPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/cardholder": {
+      "post": {
+        "operationId": "postCardholder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardholderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/cardholder/{cardholderId}": {
+      "get": {
+        "operationId": "getCardholderCardholderid",
+        "parameters": [
+          {
+            "name": "cardholderId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/{token}/suspend": {
+      "put": {
+        "operationId": "putCardTokenSuspend",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/{token}/stolen": {
+      "put": {
+        "operationId": "putCardTokenStolen",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/{token}/pin": {
+      "get": {
+        "operationId": "getCardTokenPin",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      },
+      "put": {
+        "operationId": "putCardTokenPin",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PinRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/{token}/lost": {
+      "put": {
+        "operationId": "putCardTokenLost",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/{token}/cardholder": {
+      "put": {
+        "operationId": "putCardTokenCardholder",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardholderPutTokenRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/{token}/activate": {
+      "put": {
+        "operationId": "putCardTokenActivate",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/{token}/account": {
+      "put": {
+        "operationId": "putCardTokenAccount",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card": {
+      "post": {
+        "operationId": "postCard",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/{token}/debit": {
+      "post": {
+        "operationId": "postCardTokenDebit",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DebitRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/{token}/credit": {
+      "post": {
+        "operationId": "postCardTokenCredit",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreditRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/transfers": {
+      "post": {
+        "operationId": "postCardTransfers",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransfersRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/{token}": {
+      "get": {
+        "operationId": "getCardToken",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/{token}/transactions": {
+      "get": {
+        "operationId": "getCardTokenTransactions",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/{token}/balance": {
+      "get": {
+        "operationId": "getCardTokenBalance",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card-product/{cardProductId}/config": {
+      "get": {
+        "operationId": "getCardProductCardproductidConfig",
+        "parameters": [
+          {
+            "name": "cardProductId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      },
+      "put": {
+        "operationId": "putCardProductCardproductidConfig",
+        "parameters": [
+          {
+            "name": "cardProductId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfigPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card-product": {
+      "post": {
+        "operationId": "postCardProduct",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardProductRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card-product/{cardProductId}/setup": {
+      "post": {
+        "operationId": "postCardProductCardproductidSetup",
+        "parameters": [
+          {
+            "name": "cardProductId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardProductSetupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card-product/{cardProductId}": {
+      "get": {
+        "operationId": "getCardProductCardproductid",
+        "parameters": [
+          {
+            "name": "cardProductId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card-product/list": {
+      "get": {
+        "operationId": "getCardProductList",
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/EHIMode/configuration/{id}": {
+      "put": {
+        "operationId": "putEhimodeConfigurationId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EHIModeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/EHIMode/configuration": {
+      "get": {
+        "operationId": "getEhimodeConfiguration",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      },
+      "post": {
+        "operationId": "postEhimodeConfiguration",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EHIModeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/usage": {
+      "post": {
+        "operationId": "postCardUsage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardUsageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    },
+    "/card/usage/{code}": {
+      "get": {
+        "operationId": "getCardUsageCode",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any Response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "Any type of entity body"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "default": []
+          }
+        ],
+        "x-throttling-tier": "Unlimited"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CardProductRequest": {
+        "required": [
+          "active",
+          "bin",
+          "cardActivation",
+          "cardNumberLength",
+          "cardType",
+          "code",
+          "endDate",
+          "institutionId",
+          "name",
+          "randomCardNumber",
+          "scheme",
+          "startDate"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "bin": {
+            "type": "string"
+          },
+          "cardNumberLength": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "randomCardNumber": {
+            "type": "boolean"
+          },
+          "scheme": {
+            "type": "string"
+          },
+          "cardActivation": {
+            "type": "string"
+          },
+          "cardType": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "institutionId": {
+            "type": "string"
+          }
+        }
+      },
+      "AccountRequest": {
+        "required": ["accountCode"],
+        "type": "object",
+        "properties": {
+          "accountCode": {
+            "type": "string"
+          }
+        }
+      },
+      "EHIModeRequest": {
+        "required": [
+          "acknowledgement",
+          "created",
+          "ehimode",
+          "id",
+          "maximumRetry",
+          "responseTime",
+          "txnType",
+          "updated"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "txnType": {
+            "type": "string"
+          },
+          "acknowledgement": {
+            "type": "string"
+          },
+          "maximumRetry": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "responseTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "created": {
+            "type": "string"
+          },
+          "updated": {
+            "type": "string"
+          },
+          "ehimode": {
+            "type": "string"
+          }
+        }
+      },
+      "CardholderPutRequest": {
+        "required": [
+          "address1",
+          "birthDate",
+          "city",
+          "country",
+          "email",
+          "firstName",
+          "lastName",
+          "lastName2",
+          "phone"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "lastName2": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "address1": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "birthDate": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        }
+      },
+      "CreditRequest": {
+        "required": [
+          "amount",
+          "channel",
+          "currency",
+          "description",
+          "invoice",
+          "reason",
+          "rrn"
+        ],
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "currency": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": {
+            "type": "string"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "invoice": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "rrn": {
+            "type": "string"
+          }
+        }
+      },
+      "DebitRequest": {
+        "required": [
+          "amount",
+          "channel",
+          "currency",
+          "description",
+          "invoice",
+          "ksn",
+          "pinblk",
+          "reason",
+          "rrn"
+        ],
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "currency": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": {
+            "type": "string"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "invoice": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "rrn": {
+            "type": "string"
+          },
+          "pinblk": {
+            "type": "string"
+          },
+          "ksn": {
+            "type": "string"
+          }
+        }
+      },
+      "CardUsageRequest": {
+        "required": [
+          "allowAuthLimitShareWithPrimary",
+          "allowAuthOnSecondary",
+          "allowBalanceEnquiryAtATM",
+          "allowBlankCVVInEcommerce",
+          "allowBlankCVVInManualKeyEntry",
+          "allowBlankCVVInMoto",
+          "allowBlankCVVInRecurring",
+          "allowBlankExpiryDate",
+          "allowBypassCVVCheck",
+          "allowBypassExpiryDateCheck",
+          "allowBypassOnlinePINCheck",
+          "allowCashAdvance",
+          "allowCashAtATM",
+          "allowCashWithdrawalInOtherCurrency",
+          "allowCashWithdrawalOutsideIssuingCountry",
+          "allowContactlessEMV",
+          "allowContactlessMagStripe",
+          "allowEcommerce",
+          "allowInstantFunding",
+          "allowLoadsLimitShareWithPrimary",
+          "allowLoadsOnSecondary",
+          "allowMagStripeTxnAtChipCapableTerminal",
+          "allowMagstripePanEntry",
+          "allowManualKeyEntry",
+          "allowManualKeyEntryAtChipCapableTerminal",
+          "allowManualKeyEntryForCardholderNotPresent",
+          "allowMoto",
+          "allowNoVerification",
+          "allowOfflinePinVerification",
+          "allowOnlinePinVerification",
+          "allowOriginalCredits",
+          "allowOvernightSweepOfFunds",
+          "allowPINChangeAtATM",
+          "allowPINUnblockAtATM",
+          "allowPaymentsLimitShareWithPrimary",
+          "allowPaymentsOnSecondary",
+          "allowPos",
+          "allowPosOutsideIssuingCountry",
+          "allowPosUsageInOtherCurrency",
+          "allowPurchaseOfGoodsAndServices",
+          "allowPurchaseWithCashback",
+          "allowRecurring",
+          "allowSignatureVerification",
+          "allowToOverrideInternationalEcommerce",
+          "allowTransactionAlertsEnabled",
+          "allowUnknownAcceptanceMethod",
+          "allowVisaQuasiCashPOSTransactions",
+          "code",
+          "forceNextEMVTxnOnline",
+          "ifDeclinedForceNextEMVTxnOnline",
+          "ifZeroOrNegativeBalanceForceNxtEMVTxnOnline",
+          "name",
+          "resetEMVCountersToUpperOfflineLimits",
+          "returnBalanceAsSumOfAvailableBal",
+          "returnBalanceAsSumOfEHIBal",
+          "returnBalanceAsSumOfPrimaryBal"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "allowUnknownAcceptanceMethod": {
+            "type": "boolean"
+          },
+          "allowEcommerce": {
+            "type": "boolean"
+          },
+          "allowMoto": {
+            "type": "boolean"
+          },
+          "allowPos": {
+            "type": "boolean"
+          },
+          "allowRecurring": {
+            "type": "boolean"
+          },
+          "allowManualKeyEntry": {
+            "type": "boolean"
+          },
+          "allowMagStripeTxnAtChipCapableTerminal": {
+            "type": "boolean"
+          },
+          "allowMagstripePanEntry": {
+            "type": "boolean"
+          },
+          "allowOfflinePinVerification": {
+            "type": "boolean"
+          },
+          "allowOnlinePinVerification": {
+            "type": "boolean"
+          },
+          "allowSignatureVerification": {
+            "type": "boolean"
+          },
+          "allowNoVerification": {
+            "type": "boolean"
+          },
+          "allowCashWithdrawalOutsideIssuingCountry": {
+            "type": "boolean"
+          },
+          "allowCashWithdrawalInOtherCurrency": {
+            "type": "boolean"
+          },
+          "allowPosOutsideIssuingCountry": {
+            "type": "boolean"
+          },
+          "allowPosUsageInOtherCurrency": {
+            "type": "boolean"
+          },
+          "allowContactlessEMV": {
+            "type": "boolean"
+          },
+          "allowManualKeyEntryAtChipCapableTerminal": {
+            "type": "boolean"
+          },
+          "allowManualKeyEntryForCardholderNotPresent": {
+            "type": "boolean"
+          },
+          "allowContactlessMagStripe": {
+            "type": "boolean"
+          },
+          "allowPurchaseWithCashback": {
+            "type": "boolean"
+          },
+          "allowCashAdvance": {
+            "type": "boolean"
+          },
+          "allowCashAtATM": {
+            "type": "boolean"
+          },
+          "allowPINChangeAtATM": {
+            "type": "boolean"
+          },
+          "allowBalanceEnquiryAtATM": {
+            "type": "boolean"
+          },
+          "allowPINUnblockAtATM": {
+            "type": "boolean"
+          },
+          "allowPurchaseOfGoodsAndServices": {
+            "type": "boolean"
+          },
+          "allowVisaQuasiCashPOSTransactions": {
+            "type": "boolean"
+          },
+          "allowOriginalCredits": {
+            "type": "boolean"
+          },
+          "allowBypassOnlinePINCheck": {
+            "type": "boolean"
+          },
+          "allowBypassExpiryDateCheck": {
+            "type": "boolean"
+          },
+          "allowBypassCVVCheck": {
+            "type": "boolean"
+          },
+          "allowBlankCVVInEcommerce": {
+            "type": "boolean"
+          },
+          "allowBlankCVVInMoto": {
+            "type": "boolean"
+          },
+          "allowBlankCVVInRecurring": {
+            "type": "boolean"
+          },
+          "allowBlankCVVInManualKeyEntry": {
+            "type": "boolean"
+          },
+          "allowBlankExpiryDate": {
+            "type": "boolean"
+          },
+          "ifDeclinedForceNextEMVTxnOnline": {
+            "type": "boolean"
+          },
+          "ifZeroOrNegativeBalanceForceNxtEMVTxnOnline": {
+            "type": "boolean"
+          },
+          "forceNextEMVTxnOnline": {
+            "type": "boolean"
+          },
+          "resetEMVCountersToUpperOfflineLimits": {
+            "type": "boolean"
+          },
+          "allowTransactionAlertsEnabled": {
+            "type": "boolean"
+          },
+          "allowInstantFunding": {
+            "type": "boolean"
+          },
+          "allowToOverrideInternationalEcommerce": {
+            "type": "boolean"
+          },
+          "allowOvernightSweepOfFunds": {
+            "type": "boolean"
+          },
+          "allowAuthLimitShareWithPrimary": {
+            "type": "boolean"
+          },
+          "allowLoadsLimitShareWithPrimary": {
+            "type": "boolean"
+          },
+          "allowPaymentsLimitShareWithPrimary": {
+            "type": "boolean"
+          },
+          "allowAuthOnSecondary": {
+            "type": "boolean"
+          },
+          "allowLoadsOnSecondary": {
+            "type": "boolean"
+          },
+          "allowPaymentsOnSecondary": {
+            "type": "boolean"
+          },
+          "returnBalanceAsSumOfAvailableBal": {
+            "type": "boolean"
+          },
+          "returnBalanceAsSumOfEHIBal": {
+            "type": "boolean"
+          },
+          "returnBalanceAsSumOfPrimaryBal": {
+            "type": "boolean"
+          }
+        }
+      },
+      "TransfersRequest": {
+        "required": [
+          "amount",
+          "channel",
+          "currency",
+          "id",
+          "reason",
+          "reference"
+        ],
+        "type": "object",
+        "properties": {
+          "channel": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "currency": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "IssuerRequest": {
+        "required": [
+          "contactEmail",
+          "country",
+          "institutionName",
+          "issuerName",
+          "memberId",
+          "phone",
+          "programMgrCode",
+          "programMgrName"
+        ],
+        "type": "object",
+        "properties": {
+          "issuerName": {
+            "type": "string"
+          },
+          "memberId": {
+            "type": "string"
+          },
+          "programMgrName": {
+            "type": "string"
+          },
+          "programMgrCode": {
+            "type": "string"
+          },
+          "institutionName": {
+            "type": "string"
+          },
+          "contactEmail": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        }
+      },
+      "PinRequest": {
+        "required": ["newPIN", "oldPIN"],
+        "type": "object",
+        "properties": {
+          "oldPIN": {
+            "type": "string"
+          },
+          "newPIN": {
+            "type": "string"
+          }
+        }
+      },
+      "CardholderPutTokenRequest": {
+        "required": ["cardholderId"],
+        "type": "object",
+        "properties": {
+          "cardholderId": {
+            "type": "string"
+          }
+        }
+      },
+      "CardRequest": {
+        "required": [
+          "cardHolder",
+          "cardProduct",
+          "embossingName",
+          "expiration",
+          "serviceCode",
+          "virtual"
+        ],
+        "type": "object",
+        "properties": {
+          "cardProduct": {
+            "type": "string"
+          },
+          "embossingName": {
+            "type": "string"
+          },
+          "expiration": {
+            "type": "string"
+          },
+          "serviceCode": {
+            "type": "string"
+          },
+          "virtual": {
+            "type": "boolean"
+          },
+          "cardHolder": {
+            "$ref": "#/components/schemas/CardholderRequest"
+          }
+        }
+      },
+      "CardProductSetupRequest": {
+        "required": [
+          "active",
+          "amountLimit",
+          "approvalsOnly",
+          "currencyCode",
+          "name",
+          "scopeEntity",
+          "scopeTime",
+          "usageLimit",
+          "validOnCredit",
+          "validOnPurchase",
+          "validOnTransfer",
+          "validOnWithdrawal"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "currencyCode": {
+            "type": "string"
+          },
+          "approvalsOnly": {
+            "type": "boolean"
+          },
+          "usageLimit": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "amountLimit": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "validOnCredit": {
+            "type": "boolean"
+          },
+          "validOnPurchase": {
+            "type": "boolean"
+          },
+          "validOnTransfer": {
+            "type": "boolean"
+          },
+          "validOnWithdrawal": {
+            "type": "boolean"
+          },
+          "scopeEntity": {
+            "type": "string"
+          },
+          "scopeTime": {
+            "type": "string"
+          }
+        }
+      },
+      "ConfigPutRequest": {
+        "required": [
+          "authFeeId",
+          "cardUsageId",
+          "countryGroupRuleId",
+          "currencyGroupRuleId",
+          "mccGroupRuleId",
+          "recurringFeeId",
+          "velocityLimitId",
+          "webserviceFeeId"
+        ],
+        "type": "object",
+        "properties": {
+          "cardUsageId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "velocityLimitId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "authFeeId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "recurringFeeId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "webserviceFeeId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "mccGroupRuleId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "countryGroupRuleId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "currencyGroupRuleId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "CardholderRequest": {
+        "required": [
+          "active",
+          "address1",
+          "birthDate",
+          "city",
+          "country",
+          "email",
+          "firstName",
+          "institutionId",
+          "lastName",
+          "lastName2",
+          "phone",
+          "realId"
+        ],
+        "type": "object",
+        "properties": {
+          "realId": {
+            "type": "string"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "lastName2": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "address1": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "birthDate": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "institutionId": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "default": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://gateway.finhub.cloud/authorize",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

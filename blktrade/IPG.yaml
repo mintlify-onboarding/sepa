@@ -1,0 +1,1377 @@
+openapi: 3.0.1
+info:
+  title: IPG
+  description: Ipg
+  version: 1.0.0
+servers:
+  - url: 'https://gateway.blk-trade.com/ipg'
+    description: Staging
+security:
+  - default: []
+paths:
+  /payment/pay-3d-secure:
+    post:
+      tags:
+        - IpgPaymentApis
+      parameters:
+        - name: WalletId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: TenantId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: OrganizationId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequestDto'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ThreeDSecureResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreeDSecureResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ThreeDSecureResponseDto'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /payment/pay-sync:
+    post:
+      tags:
+        - IpgPaymentApis
+      parameters:
+        - name: WalletId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: TenantId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: OrganizationId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequestDto'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SyncPaymentResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncPaymentResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SyncPaymentResponseDto'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/payment/payments/{paymentId}/status-by-payment-id':
+    get:
+      tags:
+        - IpgPaymentApis
+      parameters:
+        - name: organizationId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: paymentId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetPaymentStatusResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentStatusResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentStatusResponseDto'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /payment/payments/status-by-transaction-id:
+    post:
+      tags:
+        - IpgPaymentApis
+      parameters:
+        - name: organizationId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetPaymentByTransactionIdRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GetPaymentByTransactionIdRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GetPaymentByTransactionIdRequestDto'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetPaymentStatusResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentStatusResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentStatusResponseDto'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/payment/payments/{paymentId}/refund':
+    post:
+      tags:
+        - IpgPaymentApis
+      parameters:
+        - name: organizationId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: paymentId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RefundResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefundResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RefundResponseDto'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /payment/transactions:
+    post:
+      tags:
+        - IpgPaymentApis
+      parameters:
+        - name: organizationId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequestDto'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TransactionListResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionListResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TransactionListResponseDto'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/payment/organizations/{id}/terminals':
+    get:
+      tags:
+        - IpgPaymentApis
+      parameters:
+        - name: organizationId
+          in: query
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TerminalInformationResponse'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TerminalInformationResponse'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TerminalInformationResponse'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/payment/organizations/{organizationId}/customers/{customerId}/saved-cards':
+    get:
+      tags:
+        - IpgPaymentApis
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SavedCardsResponse'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SavedCardsResponse'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SavedCardsResponse'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /payment/token/register:
+    post:
+      tags:
+        - IpgPaymentApis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterTokenRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RegisterTokenRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RegisterTokenRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RegisterTokenResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterTokenResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RegisterTokenResponse'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/payment/token/delete/{organizationId}/{registrationId}':
+    delete:
+      tags:
+        - IpgPaymentApis
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: registrationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeleteTokenResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteTokenResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeleteTokenResponse'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /payment/token/deleteByRegistrationId:
+    post:
+      tags:
+        - IpgPaymentApis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteTokenRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DeleteTokenRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/DeleteTokenRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeleteTokenResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteTokenResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeleteTokenResponse'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /payment/pay-with-token:
+    post:
+      tags:
+        - IpgPaymentApis
+      parameters:
+        - name: WalletId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: TenantId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: OrganizationId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayWithTokenRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/PayWithTokenRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/PayWithTokenRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ThreeDSecureResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreeDSecureResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ThreeDSecureResponseDto'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /backoffice/configure-organization:
+    post:
+      tags:
+        - IpgBackofficeApis
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/backoffice/organizations/{id}/configurations':
+    get:
+      tags:
+        - IpgBackofficeApis
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/backoffice/organizations/{id}/terminals':
+    get:
+      tags:
+        - IpgBackofficeApis
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /backoffice/redirect:
+    post:
+      tags:
+        - IpgBackofficeApis
+      parameters:
+        - name: WalletId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: OrganizationId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: TenantId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: None
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+components:
+  schemas:
+    Card:
+      type: object
+      properties:
+        bin:
+          type: string
+          nullable: true
+        last4Digits:
+          type: string
+          nullable: true
+        holder:
+          type: string
+          nullable: true
+        expiryMonth:
+          type: string
+          nullable: true
+        expiryYear:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CardRequestDto:
+      type: object
+      properties:
+        number:
+          type: string
+          nullable: true
+        expiryMonth:
+          type: string
+          nullable: true
+        expiryYear:
+          type: string
+          nullable: true
+        cvv:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ConfigureOrganizationCommandDto:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        organizationId:
+          type: string
+          nullable: true
+        configurations:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+      additionalProperties: false
+    ConfigureOrganizationRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ConfigureOrganizationCommandDto'
+      additionalProperties: false
+    Customer:
+      type: object
+      properties:
+        givenName:
+          type: string
+          nullable: true
+        surname:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        telnocc:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        street:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CustomerRequestDto:
+      type: object
+      properties:
+        telnocc:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        givenName:
+          type: string
+          nullable: true
+        surname:
+          type: string
+          nullable: true
+        customerId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Data:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/Result'
+        paymentId:
+          type: string
+          nullable: true
+        timestamp:
+          type: string
+          nullable: true
+        paymentBrand:
+          type: string
+          nullable: true
+        paymentMode:
+          type: string
+          nullable: true
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        amount:
+          type: string
+          nullable: true
+        descriptor:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        card:
+          $ref: '#/components/schemas/Card'
+        transactionStatus:
+          type: string
+          nullable: true
+        merchantTransactionId:
+          type: string
+          nullable: true
+        remark:
+          type: string
+          nullable: true
+        status:
+          $ref: '#/components/schemas/Status'
+      additionalProperties: false
+    DeleteTokenRequest:
+      type: object
+      properties:
+        organizationId:
+          type: string
+          nullable: true
+        registrationId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    DeleteTokenResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/Result'
+        registrationId:
+          type: string
+          nullable: true
+        timestamp:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GetPaymentByTransactionIdRequestDto:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GetPaymentStatusResponseDto:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Data'
+      additionalProperties: false
+    OrganizationInformationResponse:
+      type: object
+      properties:
+        ipgPartnerId:
+          type: string
+          nullable: true
+        ipgSecureKey:
+          type: string
+          nullable: true
+        ipgMerchantMasterUsername:
+          type: string
+          nullable: true
+        ipgMerchantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Pagination:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        fromDate:
+          type: string
+          format: date-time
+        toDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    Parameter:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
+    PayWithTokenRequest:
+      type: object
+      properties:
+        registrationId:
+          type: string
+          nullable: true
+        merchantTransactionId:
+          type: string
+          nullable: true
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+          nullable: true
+        cardCvv:
+          type: string
+          nullable: true
+        terminalId:
+          type: string
+          nullable: true
+        destinationId:
+          type: string
+          nullable: true
+        merchantRedirectUrl:
+          type: string
+          nullable: true
+        orderType:
+          type: string
+          nullable: true
+      additionalProperties: false
+    PaymentDetail:
+      type: object
+      properties:
+        paymentId:
+          type: string
+          nullable: true
+        paymentBrand:
+          type: string
+          nullable: true
+        paymentMode:
+          type: string
+          nullable: true
+        paymentType:
+          type: string
+          nullable: true
+        registrationId:
+          nullable: true
+        amount:
+          type: integer
+          format: int32
+        currency:
+          type: string
+          nullable: true
+        card:
+          $ref: '#/components/schemas/Card'
+        transactionStatus:
+          type: string
+          nullable: true
+        merchantTransactionId:
+          nullable: true
+        result:
+          $ref: '#/components/schemas/Result'
+        descriptor:
+          nullable: true
+        remark:
+          nullable: true
+        timestamp:
+          type: string
+          nullable: true
+        redirect:
+          $ref: '#/components/schemas/Redirect'
+      additionalProperties: false
+    PaymentRequestDto:
+      type: object
+      properties:
+        merchantTransactionId:
+          type: string
+          nullable: true
+        customerId:
+          type: string
+          nullable: true
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+          nullable: true
+        orderType:
+          type: string
+          nullable: true
+        sourceId:
+          type: string
+          nullable: true
+        destinationId:
+          type: string
+          nullable: true
+        orderDescriptor:
+          type: string
+          nullable: true
+        paymentBrand:
+          type: string
+          nullable: true
+        paymentMode:
+          type: string
+          nullable: true
+        terminalId:
+          type: integer
+          format: int32
+        merchantRedirectUrl:
+          type: string
+          nullable: true
+        notificationUrl:
+          type: string
+          nullable: true
+        shipping:
+          $ref: '#/components/schemas/ShippingRequestDto'
+        customer:
+          $ref: '#/components/schemas/CustomerRequestDto'
+        card:
+          $ref: '#/components/schemas/CardRequestDto'
+      additionalProperties: false
+    Redirect:
+      type: object
+      properties:
+        url:
+          type: string
+          nullable: true
+        method:
+          nullable: true
+        target:
+          nullable: true
+        parameters:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Parameter'
+      additionalProperties: false
+    RefundResponseDto:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Data'
+      additionalProperties: false
+    RegisterTokenRequest:
+      type: object
+      properties:
+        shipping:
+          $ref: '#/components/schemas/ShippingRequestDto'
+        customer:
+          $ref: '#/components/schemas/CustomerRequestDto'
+        card:
+          $ref: '#/components/schemas/CardRequestDto'
+        paymentBrand:
+          type: string
+          nullable: true
+        paymentMode:
+          type: string
+          nullable: true
+        organizationId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RegisterTokenResponse:
+      type: object
+      properties:
+        memberId:
+          type: integer
+          format: int32
+        registrationId:
+          type: string
+          nullable: true
+        paymentBrand:
+          type: string
+          nullable: true
+        paymentMode:
+          type: string
+          nullable: true
+        timestamp:
+          type: string
+          nullable: true
+        result:
+          $ref: '#/components/schemas/Result'
+      additionalProperties: false
+    Result:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    SavedCardsResponse:
+      type: object
+      properties:
+        last4Digit:
+          type: string
+          nullable: true
+        expiryDate:
+          type: string
+          nullable: true
+        cardHolderName:
+          type: string
+          nullable: true
+        cardType:
+          type: string
+          nullable: true
+        registrationId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ShippingRequestDto:
+      type: object
+      properties:
+        country:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        postcode:
+          type: string
+          nullable: true
+        street1:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Status:
+      type: object
+      properties:
+        detail:
+          type: string
+          nullable: true
+      additionalProperties: false
+    SyncPaymentDetail:
+      type: object
+      properties:
+        paymentId:
+          type: string
+          nullable: true
+        paymentBrand:
+          type: string
+          nullable: true
+        paymentMode:
+          type: string
+          nullable: true
+        paymentType:
+          type: string
+          nullable: true
+        registrationId:
+          type: string
+          nullable: true
+        amount:
+          type: integer
+          format: int32
+        currency:
+          type: string
+          nullable: true
+        card:
+          $ref: '#/components/schemas/Card'
+        transactionStatus:
+          type: string
+          nullable: true
+        merchantTransactionId:
+          type: string
+          nullable: true
+        result:
+          $ref: '#/components/schemas/Result'
+        descriptor:
+          type: string
+          nullable: true
+        remark:
+          type: string
+          nullable: true
+        timestamp:
+          type: string
+          nullable: true
+      additionalProperties: false
+    SyncPaymentResponseDto:
+      type: object
+      properties:
+        value:
+          $ref: '#/components/schemas/SyncValue'
+        isOk:
+          type: boolean
+        isErr:
+          type: boolean
+      additionalProperties: false
+    SyncValue:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        paymentDetail:
+          $ref: '#/components/schemas/SyncPaymentDetail'
+      additionalProperties: false
+    TerminalInformationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        currency:
+          type: string
+          nullable: true
+        paymentBrand:
+          type: string
+          nullable: true
+        paymentMode:
+          type: string
+          nullable: true
+        minTransactionAmount:
+          type: number
+          format: double
+        maxTransactionAmount:
+          type: number
+          format: double
+      additionalProperties: false
+    ThreeDSecureResponseDto:
+      type: object
+      properties:
+        value:
+          $ref: '#/components/schemas/Value'
+        isOk:
+          type: boolean
+        isErr:
+          type: boolean
+      additionalProperties: false
+    Transaction:
+      type: object
+      properties:
+        result:
+          nullable: true
+        paymentId:
+          nullable: true
+        timestamp:
+          nullable: true
+        amount:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        systemPaymentId:
+          type: string
+          nullable: true
+        merchantTransactionId:
+          type: string
+          nullable: true
+        transactionStatus:
+          $ref: '#/components/schemas/TransactionStatus'
+        captureamount:
+          type: string
+          nullable: true
+        refundamount:
+          type: string
+          nullable: true
+        chargebackamount:
+          type: string
+          nullable: true
+        payoutamount:
+          type: string
+          nullable: true
+        date:
+          type: string
+          nullable: true
+        transactionDate:
+          type: string
+          nullable: true
+        remark:
+          type: string
+          nullable: true
+        customer:
+          $ref: '#/components/schemas/Customer'
+        card:
+          $ref: '#/components/schemas/Card'
+        transactionReceiptImg:
+          type: string
+          nullable: true
+        bankReferenceId:
+          type: string
+          nullable: true
+        terminalid:
+          type: integer
+          format: int32
+      additionalProperties: false
+    TransactionListResponseDto:
+      type: object
+      properties:
+        transactions:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Transaction'
+      additionalProperties: false
+    TransactionRequestDto:
+      type: object
+      properties:
+        status:
+          type: string
+          nullable: true
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      additionalProperties: false
+    TransactionStatus:
+      type: object
+      properties:
+        detail:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Value:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        paymentDetail:
+          $ref: '#/components/schemas/PaymentDetail'
+      additionalProperties: false
+  securitySchemes:
+    default:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'https://test.com'
+          scopes: {}
+          x-scopes-bindings:
+            Redirect-URL: ''
+x-wso2-auth-header: Authorization
+x-wso2-cors:
+  corsConfigurationEnabled: true
+  accessControlAllowOrigins:
+    - '*'
+  accessControlAllowCredentials: false
+  accessControlAllowHeaders:
+    - authorization
+    - Access-Control-Allow-Origin
+    - Content-Type
+    - SOAPAction
+    - apikey
+    - Internal-Key
+    - WalletId
+    - OrganizationId
+    - TenantId
+    - '*'
+  accessControlAllowMethods:
+    - GET
+    - PUT
+    - POST
+    - DELETE
+    - PATCH
+    - OPTIONS
+x-wso2-production-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/api/ipg'
+  type: http
+x-wso2-sandbox-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/api/ipg'
+  type: http
+x-wso2-basePath: /ipg/1.0.0
+x-wso2-transports:
+  - http
+  - https
+x-wso2-response-cache:
+  enabled: false
+  cacheTimeoutInSeconds: 300

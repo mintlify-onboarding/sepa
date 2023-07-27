@@ -1,0 +1,110 @@
+openapi: 3.0.1
+info:
+  title: email
+  description: email
+  version: 1.0.0
+servers:
+  - url: "https://gateway.7exchange.io/email"
+security:
+  - default: []
+paths:
+  /send:
+    post:
+      requestBody:
+        description: Send Email
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from:
+                  type: string
+                  description: sender email id
+                to:
+                  type: string
+                  description: receiver emial id
+                subject:
+                  type: string
+                  description: subject
+                content:
+                  type: string
+                  description: the body part of the email
+                contentType:
+                  type: string
+                  description: content type text/plain
+                attachments:
+                  type: string
+                  description: an attachment if any
+            example:
+              from: no-reply@sepa-cyber.com
+              to: test@gmail.com
+              subject: Sepa email
+              content: Wso2 test email
+              contentType: text/plain
+      responses:
+        default:
+          description: Default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      success:
+                        type: boolean
+                        description: boolean value true/false
+              example:
+                result:
+                  success: true
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+components:
+  securitySchemes:
+    default:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: "https://test.com"
+          scopes: {}
+x-wso2-auth-header: Authorization
+x-wso2-cors:
+  corsConfigurationEnabled: true
+  accessControlAllowOrigins:
+    - "*"
+  accessControlAllowCredentials: true
+  accessControlAllowHeaders:
+    - authorization
+    - Access-Control-Allow-Origin
+    - Content-Type
+    - SOAPAction
+    - apikey
+    - Internal-Key
+  accessControlAllowMethods:
+    - GET
+    - PUT
+    - POST
+    - DELETE
+    - PATCH
+    - OPTIONS
+x-wso2-production-endpoints:
+  urls:
+    - "https://endpoint.local.sepa-cyber.com/email"
+  type: http
+x-wso2-sandbox-endpoints:
+  urls:
+    - "https://endpoint-sandbox.local.sepa-cyber.com/email"
+  type: http
+x-wso2-basePath: /email/1.0.0
+x-wso2-transports:
+  - http
+  - https
+x-wso2-response-cache:
+  enabled: false
+  cacheTimeoutInSeconds: 300

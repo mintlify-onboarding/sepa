@@ -1,0 +1,109 @@
+openapi: 3.0.1
+info:
+  title: Country-Data
+  description: Country
+  version: 1.0.0
+servers:
+  - url: 'https://gateway.blk-trade.com/country'
+security:
+  - default: []
+paths:
+  /countryData:
+    post:
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetCountryDataRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /listData:
+    post:
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetListDataRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+components:
+  schemas:
+    GetCountryDataRequest:
+      required:
+        - country
+        - tenantId
+      type: object
+      properties:
+        tenantId:
+          type: string
+        country:
+          type: string
+    GetListDataRequest:
+      required:
+        - tenantId
+      type: object
+      properties:
+        tenantId:
+          type: string
+  securitySchemes:
+    default:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'https://test.com'
+          scopes: {}
+x-wso2-auth-header: Authorization
+x-wso2-cors:
+  corsConfigurationEnabled: true
+  accessControlAllowOrigins:
+    - '*'
+  accessControlAllowCredentials: false
+  accessControlAllowHeaders:
+    - authorization
+    - Access-Control-Allow-Origin
+    - Content-Type
+    - SOAPAction
+    - apikey
+    - Internal-Key
+  accessControlAllowMethods:
+    - GET
+    - PUT
+    - POST
+    - DELETE
+    - PATCH
+    - OPTIONS
+x-wso2-production-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/country'
+  type: http
+x-wso2-sandbox-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/country'
+  type: http
+x-wso2-basePath: /countrydata/1.0.0
+x-wso2-transports:
+  - http
+  - https
+x-wso2-response-cache:
+  enabled: false
+  cacheTimeoutInSeconds: 300

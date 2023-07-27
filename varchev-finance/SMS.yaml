@@ -1,0 +1,106 @@
+openapi: 3.0.1
+info:
+  title: SMS
+  description: SMS
+  version: 1.0.0
+servers:
+  - url: 'https://gateway.varchev.com/sms'
+paths:
+  /send:
+    post:
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    phone:
+                      type: string
+                      description: >-
+                        Receiver’s number must contain country code (for
+                        example:- 359 888888888). One request can contain more
+                        than one mobile phone number using a comma (,) to
+                        separate the numbers.
+                    message:
+                      type: string
+                      description: >-
+                        Message text. The length of the text with Latin symbols
+                        is up to 160 characters. When the text is in Cyrillic
+                        (Unicode), the limit is up to 67 characters. If the
+                        symbols exceed this number,they are paid with an
+                        additional short text message.
+                    from:
+                      type: string
+                      description: >-
+                        Message sender (Sender ID). There is a limit up to 11
+                        symbols, if your route allows an alpha sender. If not
+                        provided, a default will be used. Your client is set by
+                        an administrator.
+            example:
+              data:
+                phone: 00359 88 123 1234
+                message: Test
+                from: Test
+      responses:
+        default:
+          description: "status code\n# Response codes\n  1. Successfully accepted request\t**1004**\n  2. Invalid phone number **1006**\n  3. Invalid schedule data\t**1007**\n  4. Invalid json format\t**1008**\n  5. Invalid username or password\t**1115**\n  6. No money\t**1117**\n  7. Empty required field\t**1120**\n  8. Internet protocol not allowed\t**1121**\n  9. Account is not active\t**1122**\n"
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+components:
+  securitySchemes:
+    noauthAuth:
+      type: http
+      scheme: noauth
+    apikeyAuth:
+      type: http
+      scheme: apikey
+    default:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'https://test.com'
+          scopes: {}
+x-wso2-auth-header: Authorization
+x-wso2-cors:
+  corsConfigurationEnabled: true
+  accessControlAllowOrigins:
+    - '*'
+  accessControlAllowCredentials: false
+  accessControlAllowHeaders:
+    - authorization
+    - Access-Control-Allow-Origin
+    - Content-Type
+    - SOAPAction
+    - apikey
+    - Internal-Key
+  accessControlAllowMethods:
+    - GET
+    - PUT
+    - POST
+    - DELETE
+    - PATCH
+    - OPTIONS
+x-wso2-production-endpoints:
+  urls:
+    - 'https://endpoint.local.sepa-cyber.com/sms'
+  type: http
+x-wso2-sandbox-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/sms'
+  type: http
+x-wso2-basePath: /sms/1.0.0
+x-wso2-transports:
+  - http
+  - https
+x-wso2-response-cache:
+  enabled: false
+  cacheTimeoutInSeconds: 300

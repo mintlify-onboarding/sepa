@@ -1,0 +1,3818 @@
+openapi: 3.0.0
+info:
+  title: Customer
+  description: customer
+  version: 1.0.0
+servers:
+  - url: 'https://gateway.cyrexa.com/customer'
+security:
+  - default: []
+paths:
+  /create:
+    post:
+      tags:
+        - Customer
+      summary: Create customer
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: false
+      responses:
+        '200':
+          description: Create customer response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /createBulk:
+    post:
+      tags:
+        - Customer
+      summary: Create a list of customers
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Customer'
+        required: false
+      responses:
+        '200':
+          description: Create customer bulk reponse
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCustomerBulkResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/createDocuments/{customerId}':
+    post:
+      tags:
+        - Customer
+      summary: Create customer documents
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          description: Customer id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Document'
+        required: false
+      responses:
+        '200':
+          description: Create customer document response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCustomerDocumentResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/createAddress/{customerId}':
+    post:
+      tags:
+        - Customer
+      summary: Create customer address
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          description: Customer id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Addresses'
+        required: false
+      responses:
+        '200':
+          description: Create customer addresses response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCustomerAddressResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/addSecretQuestion/{customerId}':
+    post:
+      tags:
+        - Customer
+      summary: Create customer address
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          description: Customer id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/SecretQuestion'
+        required: false
+      responses:
+        '200':
+          description: Add secret question response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddSecreatQuestionResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/update/{customerId}':
+    put:
+      tags:
+        - Customer
+      summary: Update customer
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          description: Customer id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: false
+      responses:
+        '200':
+          description: Update customer response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/update/{customerId}/status/{status}':
+    post:
+      tags:
+        - Customer
+      summary: Update customer status
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: status
+          in: path
+          description: Customer Status
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CustomerStatus'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: false
+      responses:
+        '200':
+          description: Update customer response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/update/{customerId}/pepCheckStatus/{status}':
+    post:
+      tags:
+        - Customer
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/PepCheckStatus'
+        - name: status
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                remark:
+                  type: string
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/update/{customerId}/kycConfirmation/{status}':
+    post:
+      tags:
+        - Customer
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: status
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/KYCConfirmationStatus'
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                remark:
+                  type: string
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/update/{customerId}/revisions':
+    post:
+      tags:
+        - Customer
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/revisionsRequest'
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /getAllCustomers:
+    post:
+      tags:
+        - Customer
+      summary: Get all customers by tenant id
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilterRequest'
+      responses:
+        '200':
+          description: Get all customer response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllCustomerResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/getByCustomerStatus/{customerStatus}':
+    post:
+      tags:
+        - Customer
+      summary: Get customers by customer status
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerStatus
+          in: path
+          description: Customer Status
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CustomerStatus'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilterRequest'
+      responses:
+        '200':
+          description: Get all customers by status response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllCustomerResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/getByCustomerType/{customerType}':
+    post:
+      tags:
+        - Customer
+      summary: Get customers by customer type
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerType
+          in: path
+          description: Customer Status
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CustomerType'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilterRequest'
+      responses:
+        '200':
+          description: Get all customers by type response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllCustomerResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/getByOrganizationId/{organizationId}':
+    post:
+      tags:
+        - Customer
+      summary: Get customers by organization id
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilterRequest'
+      responses:
+        '200':
+          description: Get all customers by type response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllCustomerResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/getDetailsById/{customerId}':
+    get:
+      tags:
+        - Customer
+      summary: Get customer details by customer id
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          description: Customer id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer details by custmer id response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/getDocuments/{customerId}':
+    get:
+      tags:
+        - Customer
+      summary: Get customer documents by customer id
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          description: Customer Id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get customer document by purpose response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomerDocumentResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/documents/getByPurpose/{purpose}/{customerId}':
+    get:
+      tags:
+        - Customer
+      summary: Get customers document by purpose
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: purpose
+          in: path
+          description: Document Purpose
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/DocumentPurpose'
+        - name: customerId
+          in: path
+          description: Customer Id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get customer document by purpose response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomerDocumentResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /addCredentials:
+    post:
+      tags:
+        - Credentials
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addCredentialsRequest'
+        required: false
+      responses:
+        '200':
+          description: Add credentials response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddCredentialsResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /verifyCredentials:
+    post:
+      tags:
+        - Credentials
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/verifyCredentialsRequest'
+        required: false
+      responses:
+        '200':
+          description: Verify credentials response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /resendCredentialsCode:
+    post:
+      tags:
+        - Credentials
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/resendCredentialsRequest'
+        required: false
+      responses:
+        '200':
+          description: Resend credentials response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /recoverCredentials:
+    post:
+      tags:
+        - Credentials
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/recoverCredentialsRequest'
+        required: false
+      responses:
+        '200':
+          description: Recover credentials response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /resetCredential:
+    post:
+      tags:
+        - Credentials
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/resetPasswordRequest'
+        required: false
+      responses:
+        '200':
+          description: Reset credentials response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /expireCredential:
+    post:
+      tags:
+        - Credentials
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/resetPasswordRequest'
+        required: false
+      responses:
+        '200':
+          description: Expire credentials response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /login:
+    post:
+      tags:
+        - Credentials
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginRequest'
+        required: false
+      responses:
+        '200':
+          description: Login response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoginCredentialsResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /getCredentials:
+    post:
+      tags:
+        - Credentials
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getCredentialsRequest'
+        required: false
+      responses:
+        '200':
+          description: Get credentials response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoginCredentialsResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /organization/create:
+    post:
+      tags:
+        - Organization
+      summary: Create Organization
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organization'
+        required: false
+      responses:
+        '200':
+          description: Create organization response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /organization/createBulk:
+    post:
+      tags:
+        - Organization
+      summary: Create Organization Bulk
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Organization'
+        required: false
+      responses:
+        '200':
+          description: Create bulk organization response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrganizationBulkResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/createBulk/{customerType}':
+    post:
+      tags:
+        - Organization
+      summary: Create Organization by Customer Type
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerType
+          in: path
+          description: Customer Type
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/BusinessToPersonRelationType'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/EmpoloyeeRole'
+        required: false
+      responses:
+        '200':
+          description: Create organization by type response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrganizationBulkResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/createDocument/{organizationId}':
+    post:
+      tags:
+        - Organization
+      summary: Create business customer documents
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: organizationId
+          in: path
+          description: Organization id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Document'
+        required: false
+      responses:
+        '200':
+          description: Create organization document response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrganizationDocumentResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/createAddress/{organizationId}':
+    patch:
+      tags:
+        - Organization
+      summary: Create business address
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: organizationId
+          in: path
+          description: Organization id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Addresses'
+        required: false
+      responses:
+        '200':
+          description: Create organization document response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrganizationAddressResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/getAddress/{organizationId}':
+    get:
+      tags:
+        - Organization
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/getByBusinessType/{businessType}':
+    post:
+      tags:
+        - Organization
+      summary: Get Organization By Business Type
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: businessType
+          in: path
+          description: Document Purpose
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/BusinessToBusinessRelationType'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilterRequest'
+      responses:
+        '200':
+          description: Get all organization response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetAllOrganizationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/getByCustomerType/{customerType}':
+    post:
+      tags:
+        - Organization
+      summary: Get Organization By Customer Type
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerType
+          in: path
+          description: Document Purpose
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/BusinessToPersonRelationType'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilterRequest'
+      responses:
+        '200':
+          description: Get all organization by type response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetAllOrganizationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/update/{organizationId}':
+    put:
+      tags:
+        - Organization
+      summary: Update Organization
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organization'
+        required: false
+      responses:
+        '200':
+          description: Create organization response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /organization/getAll:
+    post:
+      tags:
+        - Organization
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/getDetails/{organizationId}':
+    get:
+      tags:
+        - Organization
+      summary: Get Organization Details
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: organizationId
+          in: path
+          description: Organization id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get organization detail response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationDetailResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/getById/{organizationId}':
+    get:
+      tags:
+        - Organization
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/getCustomers/{organizationId}':
+    get:
+      tags:
+        - Organization
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Organization customer response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/documents/{organizationId}':
+    get:
+      tags:
+        - Organization
+      summary: Get organization documents
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: organizationId
+          in: path
+          description: Organization id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get organization document response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetOrganizationDocumentResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/documents/getByPurpose/{purpose}/{organizationId}':
+    get:
+      tags:
+        - Organization
+      summary: Get organization documents by purpose
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: purpose
+          in: path
+          description: Document Purpose
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/DocumentPurpose'
+        - name: organizationId
+          in: path
+          description: Organization id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get organization document response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetOrganizationDocumentResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/updateStatus/{organizationId}/{status}':
+    put:
+      tags:
+        - Organization
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: status
+          in: path
+          description: Customer Status
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/schemas/OrganizationStatus'
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/updateKYBStatus/{organizationId}/{type}/{status}':
+    put:
+      tags:
+        - Organization
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: type
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: status
+          in: path
+          description: Customer Status
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/schemas/OrganizationStatus'
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/shareholder/create/{organizationId}':
+    patch:
+      tags:
+        - Organization
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shareholder'
+        required: false
+      responses:
+        '200':
+          description: Create organization response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmpoloyeeRole'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/shareholder/update/{organizationId}':
+    patch:
+      tags:
+        - Organization
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShareholderUpdateRequest'
+        required: false
+      responses:
+        '200':
+          description: Create organization response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmpoloyeeRole'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/shareholder/delete/{shareholderId}':
+    delete:
+      tags:
+        - Organization
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: shareholderId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Delete shareholder success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/shareholder/get/{organizationId}':
+    get:
+      tags:
+        - Organization
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get shareholder response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmpoloyeeRole'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/entity/{organizationId}':
+    get:
+      tags:
+        - Organization
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+    delete:
+      tags:
+        - Organization
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/entity/create/{organizationId}':
+    patch:
+      tags:
+        - Organization
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/organization/entity/update/{organizationId}':
+    patch:
+      tags:
+        - Organization
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/sepaId/{customerId}':
+    get:
+      tags:
+        - Customer
+      summary: Get SEPA id by customerId
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          description: Customer Id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get SEPA id by customerId response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSepaIdResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/sepaId/{customerId}/by/{communicationChannel}':
+    get:
+      tags:
+        - Customer
+      summary: Get SEPA id by customerId and communicationChannel
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          description: Customer Id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: communicationChannel
+          in: path
+          description: Communication channel
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CommunicationChannelEnum'
+      responses:
+        '200':
+          description: Get SEPA id by customerId response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSepaIdByCommunicationChannelResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /getAllGroup:
+    post:
+      tags:
+        - Access Control
+      summary: Get All group
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetAllGroupRequest'
+      responses:
+        '200':
+          description: Get all group response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Group'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /getAllUsersByGroup:
+    post:
+      tags:
+        - Access Control
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetAllUserByGroupRequest'
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /getAccessControl:
+    post:
+      tags:
+        - Access Control
+      summary: Get Access Control
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetAccessControlRequest'
+      responses:
+        '200':
+          description: Get Access Control Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccessControl'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /addGroup:
+    post:
+      tags:
+        - Access Control
+      summary: Add Group
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddGroupRequest'
+      responses:
+        '200':
+          description: Add Group Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /addComponentAccessRight:
+    post:
+      tags:
+        - Access Control
+      summary: Add Component Access Right
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ComponentAccessRightRequest'
+      responses:
+        '200':
+          description: Add Component Access Right Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /revokeComponentAccessRight:
+    post:
+      tags:
+        - Access Control
+      summary: Revoke Component Access Right
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ComponentAccessRightRequest'
+      responses:
+        '200':
+          description: Revoke Component Access Right Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/twoFA/twoFACredentials/{customerId}':
+    get:
+      tags:
+        - 2FA
+      summary: Get 2FA credentials
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get 2FA crednetials Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Get2FAResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/twoFA/validateToken/{customerId}':
+    post:
+      tags:
+        - 2FA
+      summary: Validate 2FA token
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateTwoFAToken'
+      responses:
+        '200':
+          description: Validate 2FA token Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Validate2FATokenResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/twoFA/validate2FAToken/{customerId}':
+    post:
+      tags:
+        - 2FA
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/twoFA/changeTwoFa/{customerId}':
+    put:
+      tags:
+        - 2FA
+      summary: Change 2FA credentials
+      parameters:
+        - name: tenantId
+          in: header
+          description: Tenant/Owner id
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: customerId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeTwoFA'
+      responses:
+        '200':
+          description: Change 2FA Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/2FAResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/activeSession/{customerId}':
+    get:
+      tags:
+        - Active Session
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/activeSession/{customerId}/logout/{sessionId}':
+    post:
+      tags:
+        - Active Session
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: sessionId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/activeSession/{customerId}/logoutAll':
+    post:
+      tags:
+        - Active Session
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-auth-type: None
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        id:
+          type: string
+        customerType:
+          $ref: '#/components/schemas/CustomerType'
+        customerName:
+          type: string
+        customerStatus:
+          $ref: '#/components/schemas/CustomerStatus'
+        categorization:
+          $ref: '#/components/schemas/CustomerCategory'
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerNotification'
+        person:
+          $ref: '#/components/schemas/Person'
+        twofa:
+          $ref: '#/components/schemas/twofa'
+    Person:
+      type: object
+      properties:
+        firstName:
+          $ref: '#/components/schemas/PersonNamePart'
+        lastName:
+          $ref: '#/components/schemas/PersonNamePart'
+        fullName:
+          type: string
+        groupId:
+          type: string
+        gender:
+          $ref: '#/components/schemas/Gender'
+        dateOfBirth:
+          type: string
+        placeOfBirth:
+          type: string
+        nationality:
+          type: string
+        pinCode:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+        telephoneNumbers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TelephoneNumber'
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Addresses'
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
+        SecretQuestion:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecretQuestion'
+    CustomerType:
+      type: string
+      enum:
+        - Person
+        - Organization
+    OrganizationStatus:
+      type: string
+      enum:
+        - NOT_STARTED
+        - WAITING_VERIFICATION
+        - VERIFIED
+        - SEEN_BY_ADMIN
+        - SENT_FOR_REVISION
+        - SUSPENDED
+    CustomerStatus:
+      type: string
+      enum:
+        - new
+        - verified
+        - under_verificaiton
+        - blacklisted
+        - under_investigation
+        - dispute
+        - on_hold
+        - bancrupted
+    CustomerCategory:
+      type: string
+      enum:
+        - category1
+        - category2
+        - category3
+    CustomerNotification:
+      type: object
+      properties:
+        notificationType:
+          $ref: '#/components/schemas/NotificationType'
+        isEnabled:
+          type: boolean
+    NotificationType:
+      type: string
+      enum:
+        - Marketingemails
+        - Marketingnotifications
+        - Friendsvisibility
+    Gender:
+      type: string
+      enum:
+        - Male
+        - Female
+        - Non-binary
+        - Transgender
+        - Other
+        - Prefer not to tell
+    PersonNamePart:
+      type: object
+      properties:
+        name:
+          type: string
+        order:
+          type: integer
+        abbreviation:
+          type: string
+        language:
+          type: string
+        native:
+          type: string
+        suffix:
+          type: string
+        prefix:
+          type: string
+    TelephoneNumber:
+      type: object
+      properties:
+        phoneType:
+          $ref: '#/components/schemas/PhoneType'
+        operator:
+          type: string
+        encoding:
+          $ref: '#/components/schemas/Encoding'
+        country:
+          type: string
+        number:
+          type: string
+        purpose:
+          type: string
+    PhoneType:
+      type: string
+      enum:
+        - fixed
+        - mobile
+        - satellite
+        - virtual
+    Encoding:
+      type: string
+      enum:
+        - numbers
+        - international
+        - text
+    Document:
+      type: object
+      properties:
+        purpose:
+          $ref: '#/components/schemas/DocumentPurpose'
+        name:
+          type: string
+        documentType:
+          $ref: '#/components/schemas/DocumentType'
+        location:
+          type: string
+        verificationResponse:
+          type: string
+        status:
+          $ref: '#/components/schemas/DocumentStatus'
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdditionalData'
+    DocumentPurpose:
+      type: string
+      enum:
+        - KYB
+        - KYC
+        - PEP&SANCTION
+    DocumentStatus:
+      type: string
+      enum:
+        - underverification
+        - verified
+        - declined
+        - incomplete
+        - expired
+    DocumentType:
+      type: string
+      enum:
+        - ID front side
+        - ID back side
+        - Passport
+        - accountAuthority
+        - shareholderStructure
+        - operationAddress
+        - registeredAddress
+        - selfie
+        - livelinessDetection
+    AdditionalDataType:
+      type: string
+      enum:
+        - Number
+        - Boolean
+        - json
+        - string
+    Addresses:
+      type: object
+      properties:
+        addressPurpose:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      properties:
+        country:
+          type: string
+        area:
+          type: string
+        zipCode:
+          type: string
+        city:
+          type: string
+        street:
+          type: string
+        streetNumber:
+          type: array
+          items:
+            type: string
+        building:
+          type: string
+        apartment:
+          type: string
+        entrance:
+          type: string
+        floor:
+          type: string
+        doorNumber:
+          type: string
+        geoPosition:
+          $ref: '#/components/schemas/GeoPosition'
+        alternative:
+          $ref: '#/components/schemas/ThreeWords'
+        relatedToAddress:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddressRelation'
+        additionalData:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdditionalData'
+    ThreeWords:
+      type: object
+      properties:
+        word1:
+          type: string
+        word2:
+          type: string
+        word3:
+          type: string
+    GeoPosition:
+      type: object
+      properties:
+        latitude:
+          type: number
+        longitude:
+          type: number
+        altitude:
+          type: number
+    AddressRelation:
+      type: object
+      properties:
+        relationType:
+          $ref: '#/components/schemas/AddressRelationType'
+        address:
+          type: string
+    AddressRelationType:
+      type: string
+      enum:
+        - near_by
+        - crossing
+        - opposite_to
+        - inside_of
+        - behind
+        - infront
+    SecretQuestion:
+      type: object
+      properties:
+        question:
+          type: string
+        answer:
+          type: string
+    twofa:
+      type: object
+      properties:
+        targetType:
+          $ref: '#/components/schemas/TargetType'
+        targetValue:
+          type: string
+        targetCode:
+          type: string
+        inputCode:
+          type: string
+        codematch:
+          type: boolean
+    TargetType:
+      type: string
+      enum:
+        - SMS
+        - Email
+    AdditionalData:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/AdditionalDataType'
+        value:
+          type: string
+    Credential:
+      type: object
+      properties:
+        credentialType:
+          $ref: '#/components/schemas/CredentialType'
+        value:
+          type: string
+        code:
+          type: string
+        communicationChannel:
+          $ref: '#/components/schemas/CommunicationChannel'
+    CredentialType:
+      type: string
+      enum:
+        - email
+        - intenal_user_id
+        - single_token
+        - one_time_password
+        - username
+        - passport
+        - person_id_card
+        - personal_identification_number
+        - biometrics
+        - secret_question
+        - sms
+    CommunicationChannel:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/CommunicationChannelType'
+        addressUrl:
+          type: string
+    CommunicationChannelType:
+      type: string
+      enum:
+        - phone
+        - email
+        - web
+        - mobile_application
+        - web_admin
+        - external_system
+        - service_desk_online
+        - service_desk_phone
+    Organization:
+      type: object
+      properties:
+        countryOfCorporation:
+          type: string
+        legalName:
+          type: string
+        isTradingNameExist:
+          type: boolean
+          default: false
+        tradingName:
+          type: string
+        taxRegistrationNumber:
+          type: string
+        taxIdentificationNumber:
+          type: string
+        dateOfIncorporation:
+          type: string
+        businesstypes:
+          type: string
+        sourceOfIncomingFund:
+          type: string
+        purposeOfAccount:
+          type: string
+        expectedAnnualActivityOfPlatform:
+          type: string
+        registrationNumber:
+          type: string
+        businessType:
+          $ref: '#/components/schemas/BusinessToBusinessRelationType'
+        shareholders:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmpoloyeeRole'
+        relatedTo:
+          $ref: '#/components/schemas/OrganizationRelation'
+        website:
+          type: string
+        businessSector:
+          type: string
+        rangeOfServicesOrGoods:
+          type: string
+        transactionPredict:
+          $ref: '#/components/schemas/TransactionPrediction'
+        countryList:
+          $ref: '#/components/schemas/CountryList'
+        telephoneNumber:
+          type: array
+          items:
+            $ref: '#/components/schemas/TelephoneNumber'
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Addresses'
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
+        businessToBusinessMap:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessToBusinessMap'
+        businessToCustomerMap:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessToPersonMap'
+    Shareholder:
+      type: object
+      properties:
+        shareholders:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmpoloyeeRole'
+    ShareholderUpdateRequest:
+      type: object
+      properties:
+        shareholders:
+          $ref: '#/components/schemas/EmpoloyeeRole'
+    EmpoloyeeRole:
+      type: object
+      properties:
+        id:
+          type: string
+        personFullname:
+          type: string
+        peerFullname:
+          type: string
+        escliationFullname:
+          type: string
+        status:
+          type: string
+        responsibility:
+          type: string
+        positions:
+          type: string
+        ownershipPercentage:
+          type: string
+        person:
+          $ref: '#/components/schemas/Person'
+        escallation:
+          $ref: '#/components/schemas/Person'
+        peers:
+          $ref: '#/components/schemas/Person'
+    OrganizationRelation:
+      type: object
+      properties:
+        relationType:
+          type: string
+        organizationID:
+          type: string
+    CountryList:
+      type: object
+      properties:
+        SendList:
+          type: array
+          items:
+            type: string
+        ReceiveList:
+          type: array
+          items:
+            type: string
+    TransactionPrediction:
+      type: object
+      properties:
+        MonthlyVolumeRange:
+          type: number
+        NumberOfMonthlyPayment:
+          type: number
+        MaxSinglePayment:
+          type: number
+    BusinessToPersonMap:
+      type: object
+      properties:
+        relationType:
+          $ref: '#/components/schemas/BusinessToPersonRelationType'
+        tenannaId:
+          type: string
+        personid:
+          type: string
+        organizationId:
+          type: string
+    BusinessToBusinessMap:
+      type: object
+      properties:
+        relationType:
+          $ref: '#/components/schemas/BusinessToBusinessRelationType'
+        tenannaId:
+          type: string
+        organizationId:
+          type: string
+        RelatingorganizationId:
+          type: string
+    BusinessToPersonRelationType:
+      type: string
+      enum:
+        - Employee
+        - Shareholder
+        - Customer
+    KYCConfirmationStatus:
+      type: string
+      enum:
+        - NOT_START
+        - WAITING_CONFIRMATION
+        - SEND_TO_REVISION
+        - CONFIRMED
+    PepCheckStatus:
+      type: string
+      enum:
+        - NOT_START
+        - WAITING_VERIFICATION
+        - SEND_TO_REVISION
+        - VERIFIED
+        - SUSPENDED
+    BusinessToBusinessRelationType:
+      type: string
+      enum:
+        - Partner
+        - Supplier
+    addCredentialsRequest:
+      type: object
+      properties:
+        customerId:
+          type: string
+        credentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/Credential'
+    revisionsRequest:
+      type: object
+      properties:
+        revisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/revisions'
+    revisions:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    verifyCredentialsRequest:
+      type: object
+      properties:
+        credentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/Credential'
+    resendCredentialsRequest:
+      type: object
+      properties:
+        credential:
+          $ref: '#/components/schemas/Credential'
+    recoverCredentialsRequest:
+      type: object
+      properties:
+        credential:
+          $ref: '#/components/schemas/Credential'
+    getCredentialsRequest:
+      type: object
+      properties:
+        credential:
+          $ref: '#/components/schemas/Credential'
+    resetPasswordRequest:
+      type: object
+      properties:
+        credential:
+          $ref: '#/components/schemas/Credential'
+    loginRequest:
+      type: object
+      properties:
+        credentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/Credential'
+    FilterRequest:
+      type: object
+      properties:
+        type:
+          type: string
+        created:
+          type: string
+        status:
+          type: string
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+    Pagination:
+      type: object
+      properties:
+        numberOfPage:
+          type: integer
+        totalSize:
+          type: integer
+        currentPage:
+          type: integer
+    PaginationRequest:
+      type: object
+      properties:
+        skip:
+          type: integer
+        limit:
+          type: integer
+        page:
+          type: integer
+    CustomerResponse:
+      type: object
+      properties:
+        customer:
+          $ref: '#/components/schemas/Customer'
+    OrganizationResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        organization:
+          $ref: '#/components/schemas/Organization'
+    CreateCustomerBulkResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        customerIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerIds'
+    CustomerIds:
+      type: object
+      properties:
+        customerId:
+          type: string
+    CreateCustomerAddressResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        customerId:
+          type: string
+        addressIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddressIds'
+    AddressIds:
+      type: object
+      properties:
+        addressId:
+          type: string
+    CreateCustomerDocumentResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        customerId:
+          type: string
+        documentIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentIds'
+    DocumentIds:
+      type: object
+      properties:
+        documentId:
+          type: string
+    AddSecreatQuestionResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        customerId:
+          type: string
+        secretQuestionIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecretQuestionIds'
+    SecretQuestionIds:
+      type: object
+      properties:
+        secretQuestionId:
+          type: string
+    GetAllCustomerResponse:
+      type: object
+      properties:
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    GetCustomerDocumentResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
+    CreateOrganizationBulkResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        organizationIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationIds'
+    OrganizationIds:
+      type: object
+      properties:
+        organizationId:
+          type: string
+    CreateOrganizationDocumentResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        organizationId:
+          type: string
+        documentIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentIds'
+    CreateOrganizationAddressResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        organizationId:
+          type: string
+        addressIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddressIds'
+    GetAllOrganizationResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        organizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    OrganizationDetailResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        organization:
+          $ref: '#/components/schemas/Organization'
+    GetOrganizationDocumentResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
+    ErrorResponse:
+      properties:
+        httpCode:
+          type: number
+        internalCode:
+          type: number
+        internalType:
+          type: string
+        severity:
+          type: string
+        description:
+          type: string
+    CredentialsResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+    AddCredentialsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        message:
+          type: string
+        code:
+          type: integer
+    LoginCredentialsResponse:
+      type: object
+      properties:
+        userId:
+          type: string
+        customerId:
+          type: string
+        personId:
+          type: string
+        tenantId:
+          type: string
+        organizationId:
+          type: string
+        credentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoginResponse'
+        twoFaInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/2FAResponse'
+    LoginResponse:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        value:
+          type: string
+        token:
+          type: string
+    GetSepaIdResponse:
+      type: object
+      properties:
+        sepaIdCode:
+          type: string
+    GetSepaIdByCommunicationChannelResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        message:
+          type: string
+    CommunicationChannelEnum:
+      type: string
+      enum:
+        - SMS
+        - EMAIL
+    GetAllUserByGroupRequest:
+      type: object
+      properties:
+        organizationId:
+          type: string
+        groupId:
+          type: array
+          items:
+            type: string
+        meta:
+          $ref: '#/components/schemas/PaginationRequest'
+    GetAllGroupRequest:
+      type: object
+      properties:
+        application:
+          $ref: '#/components/schemas/Application'
+    GetAccessControlRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+        application:
+          $ref: '#/components/schemas/Application'
+    AddGroupRequest:
+      type: object
+      properties:
+        groupName:
+          type: string
+        application:
+          type: string
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddGroupRole'
+    ComponentAccessRightRequest:
+      type: object
+      properties:
+        groupId:
+          type: string
+        customerId:
+          type: string
+        application:
+          $ref: '#/components/schemas/Application'
+    AddGroupRole:
+      type: object
+      properties:
+        componentName:
+          type: string
+        accessRight:
+          $ref: '#/components/schemas/AccessRight'
+    AccessControl:
+      type: object
+      properties:
+        userId:
+          type: string
+        groupId:
+          type: string
+        groupName:
+          type: string
+        tenantId:
+          type: string
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+    Group:
+      type: object
+      properties:
+        groupId:
+          type: string
+        groupName:
+          type: string
+        tenantId:
+          type: string
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+    Role:
+      type: object
+      properties:
+        componentId:
+          type: string
+        componentName:
+          type: string
+        accessRight:
+          $ref: '#/components/schemas/AccessRight'
+        application:
+          $ref: '#/components/schemas/Application'
+    Response:
+      type: object
+      properties:
+        id:
+          type: string
+    AccessRight:
+      type: string
+      enum:
+        - read
+        - full_control
+        - no_visibility
+    Application:
+      type: string
+      enum:
+        - b2b_wallet
+        - b2c_wallet
+        - admin_wallet
+    GetGroupResponse:
+      type: object
+      properties:
+        customerId:
+          type: string
+        fullName:
+          type: string
+        email:
+          type: string
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetGroup'
+    GetGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    ValidateTwoFAToken:
+      type: object
+      properties:
+        tfaCode:
+          type: string
+    ChangeTwoFA:
+      type: object
+      properties:
+        login:
+          type: boolean
+        trading:
+          type: boolean
+        funding:
+          type: boolean
+        customerId:
+          type: string
+    Get2FAResponse:
+      type: object
+      properties:
+        secret:
+          type: string
+        qr:
+          type: string
+    Validate2FATokenResponse:
+      type: object
+      properties:
+        isValid:
+          type: boolean
+    2FAResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        tenantId:
+          type: string
+        login:
+          type: boolean
+        trading:
+          type: boolean
+        funding:
+          type: boolean
+        userId:
+          type: string
+  securitySchemes:
+    default:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'https://test.com'
+          scopes: {}
+x-wso2-disable-security: true
+x-wso2-auth-header: Authorization
+x-wso2-cors:
+  corsConfigurationEnabled: false
+  accessControlAllowOrigins: []
+  accessControlAllowCredentials: false
+  accessControlAllowHeaders: []
+  accessControlAllowMethods: []
+x-wso2-production-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/customer'
+  type: http
+x-wso2-sandbox-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/customer'
+  type: http
+x-wso2-basePath: /customer/1.0.0
+x-wso2-transports:
+  - http
+  - https
+x-wso2-response-cache:
+  enabled: false
+  cacheTimeoutInSeconds: 300

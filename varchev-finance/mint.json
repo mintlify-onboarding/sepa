@@ -1,0 +1,568 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Varchev Finance",
+  "isWhiteLabeled": true,
+  "logo": {
+    "light": "/logo/light.png",
+    "dark": "/logo/dark.png"
+  },
+  "api": {
+    "baseUrl": [
+      "https://gateway.varchev.com/aml",
+      "https://gateway.varchev.com/country",
+      "https://gateway.varchev.com/crypto",
+      "https://gateway.varchev.com/currency",
+      "https://gateway.varchev.com/customer",
+      "https://gateway.varchev.com/email",
+      "https://gateway.varchev.com/ip",
+      "https://gateway.varchev.com/ipg",
+      "https://gateway.varchev.com/kyb",
+      "https://gateway.varchev.com/kyc",
+      "https://gateway.varchev.com/peps",
+      "https://gateway.varchev.com/rules",
+      "https://gateway.varchev.com/erc20",
+      "https://gateway.varchev.com/sms",
+      "https://gateway.varchev.com/wallet"
+    ]
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#c4151c",
+    "light": "#d44b4c",
+    "dark": "#c4151c"
+  },
+  "topbarCtaButton": {
+    "name": "Sign Up",
+    "url": "https://wallet-personal.varchev.com/auth/create-account"
+  },
+  "topbarLinks": [
+    {
+      "name": "Sign In",
+      "url": "https://wallet-personal.varchev.com/auth/login-new"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Sign In",
+      "icon": "circle-play",
+      "url": "https://wallet-personal.varchev.com/auth/login-new"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "AML",
+      "pages": [
+        "api-reference/aml/get-document",
+        "api-reference/aml/get-documents",
+        "api-reference/aml/get-verification-result",
+        "api-reference/aml/post-document-upload",
+        "api-reference/aml/put-document-status",
+        "api-reference/aml/put-document-update"
+      ]
+    },
+    {
+      "group": "Country Data",
+      "pages": [
+        "api-reference/country-data/post-country-data",
+        "api-reference/country-data/post-list-data"
+      ]
+    },
+    {
+      "group": "Crypto",
+      "pages": [
+        {
+          "group": "Private",
+          "pages": [
+            "api-reference/crypto/private/Add-Order",
+            "api-reference/crypto/private/Cancel-All-Orders-After-X",
+            "api-reference/crypto/private/Cancel-All-Orders",
+            "api-reference/crypto/private/Cancel-Order",
+            "api-reference/crypto/private/Delete-Export-Report",
+            "api-reference/crypto/private/Get-Account-Balance",
+            "api-reference/crypto/private/Get-Closed-Orders",
+            "api-reference/crypto/private/Get-Deposit-Addresses",
+            "api-reference/crypto/private/Get-Export-Report-Status",
+            "api-reference/crypto/private/Get-Ledgers-Info",
+            "api-reference/crypto/private/Get-Open-Orders",
+            "api-reference/crypto/private/Get-Open-Positions",
+            "api-reference/crypto/private/Get-Status-of-Recent-Deposits",
+            "api-reference/crypto/private/Get-Status-of-Recent-Withdrawals",
+            "api-reference/crypto/private/Get-Trade-Balance",
+            "api-reference/crypto/private/Get-Trade-Volume",
+            "api-reference/crypto/private/Get-Trades-History",
+            "api-reference/crypto/private/Get-Websockets-Token",
+            "api-reference/crypto/private/Get-Withdrawal-Information",
+            "api-reference/crypto/private/Query-Ledgers",
+            "api-reference/crypto/private/Query-Orders-Info",
+            "api-reference/crypto/private/Query-Trades-Info",
+            "api-reference/crypto/private/Request-Export-Report",
+            "api-reference/crypto/private/Request-Wallet-Transfer",
+            "api-reference/crypto/private/Request-Withdrawal-Cancelation",
+            "api-reference/crypto/private/Retrieve-Data-Export",
+            "api-reference/crypto/private/Stake-Asset",
+            "api-reference/crypto/private/Unstake-Asset",
+            "api-reference/crypto/private/Withdraw-Funds"
+          ]
+        },
+        {
+          "group": "Public",
+          "pages": [
+            "api-reference/crypto/public/Asset-Info",
+            "api-reference/crypto/public/get-server-time",
+            "api-reference/crypto/public/get-system-status",
+            "api-reference/crypto/public/post-depth",
+            "api-reference/crypto/public/post-get-deposit-methods",
+            "api-reference/crypto/public/post-ohlc",
+            "api-reference/crypto/public/Recent-Spread-Data",
+            "api-reference/crypto/public/Recent-Trades",
+            "api-reference/crypto/public/Ticker-Information",
+            "api-reference/crypto/public/Tradable-Asset-Pairs"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Currency",
+      "pages": [
+        "api-reference/currency/post-exchange-rate-series",
+        "api-reference/currency/post-exchange-rate"
+      ]
+    },
+    {
+      "group": "Customer",
+      "pages": [
+        {
+          "group": "2FA",
+          "pages": [
+            "api-reference/customer/2FA/Change-2FA-credentials",
+            "api-reference/customer/2FA/Get-2FA-credentials",
+            "api-reference/customer/2FA/post-2FA-validate-2FA-token",
+            "api-reference/customer/2FA/Validate-2FA-token"
+          ]
+        },
+        {
+          "group": "AccessControl",
+          "pages": [
+            "api-reference/customer/Access-Control/Add-Component-Access-Right",
+            "api-reference/customer/Access-Control/Add-Group",
+            "api-reference/customer/Access-Control/Get-Access-Control",
+            "api-reference/customer/Access-Control/Get-All-group",
+            "api-reference/customer/Access-Control/post-get-all-users-by-group",
+            "api-reference/customer/Access-Control/Revoke-Component-Access-Right"
+          ]
+        },
+        {
+          "group": "Active Session",
+          "pages": [
+            "api-reference/customer/active-session/get-active-session",
+            "api-reference/customer/active-session/post-active-session-logout-all",
+            "api-reference/customer/active-session/post-active-session-logout"
+          ]
+        },
+        {
+          "group": "Credentials",
+          "pages": [
+            "api-reference/customer/credentials/post-add-credentials",
+            "api-reference/customer/credentials/post-expire-credential",
+            "api-reference/customer/credentials/post-login",
+            "api-reference/customer/credentials/post-get-credentials",
+            "api-reference/customer/credentials/post-recover-credentials",
+            "api-reference/customer/credentials/post-resend-credentials-code",
+            "api-reference/customer/credentials/post-reset-credential",
+            "api-reference/customer/credentials/post-verify-credentials"
+          ]
+        },
+        {
+          "group": "Customer",
+          "pages": [
+            "api-reference/customer/Customer/Create-a-list-of-customers",
+            "api-reference/customer/Customer/Create-customer-address-1",
+            "api-reference/customer/Customer/Create-customer-address",
+            "api-reference/customer/Customer/Create-customer-documents",
+            "api-reference/customer/Customer/Create-customer",
+            "api-reference/customer/Customer/Get-all-customers-by-tenant-id",
+            "api-reference/customer/Customer/Get-customer-details-by-customer-id",
+            "api-reference/customer/Customer/Get-customer-documents-by-customer-id",
+            "api-reference/customer/Customer/Get-customers-by-customer-status",
+            "api-reference/customer/Customer/Get-customers-by-customer-type",
+            "api-reference/customer/Customer/Get-customers-by-organization-id",
+            "api-reference/customer/Customer/Get-customers-document-by-purpose",
+            "api-reference/customer/Customer/Get-sepa-id-by-customer-id",
+            "api-reference/customer/Customer/get-sepa-id-by-customerId-and-communication-channel",
+            "api-reference/customer/Customer/post-update-kycConfirmation",
+            "api-reference/customer/Customer/post-update-pepCheckStatus",
+            "api-reference/customer/Customer/post-update-revisions",
+            "api-reference/customer/Customer/Update-customer-status",
+            "api-reference/customer/Customer/Update-customer"
+          ]
+        },
+        {
+          "group": "Organization",
+          "pages": [
+            "api-reference/customer/Organization/Create-business-address",
+            "api-reference/customer/Organization/Create-business-customer-documents",
+            "api-reference/customer/Organization/Create-Organization-Bulk",
+            "api-reference/customer/Organization/Create-Organization-by-Customer-Type",
+            "api-reference/customer/Organization/Create-Organization",
+            "api-reference/customer/Organization/delete-organization-entity",
+            "api-reference/customer/Organization/delete-organization-shareholder-delete",
+            "api-reference/customer/Organization/Get-Organization-By-Business-Type",
+            "api-reference/customer/Organization/Get-Organization-By-Customer-Type",
+            "api-reference/customer/Organization/Get-Organization-Details",
+            "api-reference/customer/Organization/Get-organization-documents-by-purpose",
+            "api-reference/customer/Organization/Get-organization-documents",
+            "api-reference/customer/Organization/get-organization-entity",
+            "api-reference/customer/Organization/get-organization-get-address",
+            "api-reference/customer/Organization/get-organization-get-by-id",
+            "api-reference/customer/Organization/get-organization-get-customers",
+            "api-reference/customer/Organization/get-organization-shareholder-get",
+            "api-reference/customer/Organization/patch-organization-entity-create",
+            "api-reference/customer/Organization/patch-organization-entity-update",
+            "api-reference/customer/Organization/patch-organization-shareholder-create",
+            "api-reference/customer/Organization/patch-organization-shareholder-update",
+            "api-reference/customer/Organization/post-organization-get-all",
+            "api-reference/customer/Organization/put-organization-update-kyb-status",
+            "api-reference/customer/Organization/put-organization-update-status",
+            "api-reference/customer/Organization/Update-Organization"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Email",
+      "pages": ["api-reference/email/post-send"]
+    },
+    {
+      "group": "IP",
+      "pages": ["api-reference/ip/get-details"]
+    },
+    {
+      "group": "IPG",
+      "pages": [
+        {
+          "group": "IPG Backoffice APIs",
+          "pages": [
+            "api-reference/ipg/ipg-back-office-apis/get-backoffice-organizations-configurations",
+            "api-reference/ipg/ipg-back-office-apis/get-backoffice-organizations-terminals",
+            "api-reference/ipg/ipg-back-office-apis/post-backoffice-configure-organization",
+            "api-reference/ipg/ipg-back-office-apis/post-backoffice-redirect"
+          ]
+        },
+        {
+          "group": "IPG Payment APIs",
+          "pages": [
+            "api-reference/ipg/ipg-payment-apis/delete-payment-token-delete",
+            "api-reference/ipg/ipg-payment-apis/get-payment-organizations-customers-saved-cards",
+            "api-reference/ipg/ipg-payment-apis/get-payment-organizations-terminals",
+            "api-reference/ipg/ipg-payment-apis/get-payment-payments-status-by-payment-id",
+            "api-reference/ipg/ipg-payment-apis/post-payment-pay-3d-secure",
+            "api-reference/ipg/ipg-payment-apis/post-payment-pay-sync",
+            "api-reference/ipg/ipg-payment-apis/post-payment-pay-with-token",
+            "api-reference/ipg/ipg-payment-apis/post-payment-payments-refund",
+            "api-reference/ipg/ipg-payment-apis/post-payment-payments-status-by-transaction-id",
+            "api-reference/ipg/ipg-payment-apis/post-payment-token-delete-by-registration-id",
+            "api-reference/ipg/ipg-payment-apis/post-payment-token-register",
+            "api-reference/ipg/ipg-payment-apis/post-payment-transactions"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "KYB",
+      "pages": [
+        {
+          "group": "Company",
+          "pages": [
+            "api-reference/kyb/company/get-company-deepsearch-name",
+            "api-reference/kyb/company/get-company-deepsearch-number",
+            "api-reference/kyb/company/get-company",
+            "api-reference/kyb/company/post-details",
+            "api-reference/kyb/company/post-find-by-country-and-name",
+            "api-reference/kyb/company/post-find-by-country-and-reg-number",
+            "api-reference/kyb/company/post-find",
+            "api-reference/kyb/company/post-isin-search",
+            "api-reference/kyb/company/post-lei-search",
+            "api-reference/kyb/company/post-search-company-super"
+          ]
+        },
+        {
+          "group": "EIN Verification",
+          "pages": [
+            "api-reference/kyb/ein-verification/post-ein-verification-comprehensive-check",
+            "api-reference/kyb/ein-verification/post-ein-verification-basic-check",
+            "api-reference/kyb/ein-verification/post-ein-verification-lookup"
+          ]
+        },
+        {
+          "group": "IBAN Verification",
+          "pages": [
+            "api-reference/kyb/iban-verification/post-iban-verification-check",
+            "api-reference/kyb/iban-verification/post-iban-verification-comprehensive-check"
+          ]
+        },
+        {
+          "group": "NIF Verification",
+          "pages": [
+            "api-reference/kyb/nif-verification/post-nif-verification-basic-check",
+            "api-reference/kyb/nif-verification/post-nif-verification-comprehensive-check"
+          ]
+        },
+        {
+          "group": "Product",
+          "pages": [
+            "api-reference/kyb/product/post-ubo-retrive",
+            "api-reference/kyb/product/post-ubo-update",
+            "api-reference/kyb/product/post-ubo"
+          ]
+        },
+        {
+          "group": "System",
+          "pages": [
+            "api-reference/kyb/system/get-countries",
+            "api-reference/kyb/system/get-health",
+            "api-reference/kyb/system/get-pricelist"
+          ]
+        },
+        {
+          "group": "TIN Verification",
+          "pages": [
+            "api-reference/kyb/tin-verification/post-tin-verification-basic-check",
+            "api-reference/kyb/tin-verification/post-tin-verification-comprehensive-check",
+            "api-reference/kyb/tin-verification/post-tin-verification-name-lookup"
+          ]
+        },
+        {
+          "group": "VAT Verification",
+          "pages": [
+            "api-reference/kyb/vat-verification/post-vat-verification-basic-check",
+            "api-reference/kyb/vat-verification/post-vat-verification-comprehensive-check",
+            "api-reference/kyb/vat-verification/post-vat-verification-lookup",
+            "api-reference/kyb/vat-verification/post-vat-verification-leveltwo-check"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "KYC",
+      "pages": [
+        "api-reference/kyc/post-authorize",
+        "api-reference/kyc/post-backgroundcheck",
+        "api-reference/kyc/post-delete-info",
+        "api-reference/kyc/post-face",
+        "api-reference/kyc/post-get-info",
+        "api-reference/kyc/post-scan-documents",
+        "api-reference/kyc/post-upload-image",
+        "api-reference/kyc/put-backgroundcheck"
+      ]
+    },
+    {
+      "group": "PEPS",
+      "pages": [
+        {
+          "group": "Default",
+          "pages": [
+            "api-reference/peps/default/get-data-access-token",
+            "api-reference/peps/default/Get-token",
+            "api-reference/peps/default/screening",
+            "api-reference/peps/default/search-entity"
+          ]
+        },
+        "api-reference/peps/get-get-profile"
+      ]
+    },
+    {
+      "group": "Rules",
+      "pages": [
+        "api-reference/rules/rule/get-get",
+        "api-reference/rules/rule/post-filter",
+        "api-reference/rules/rule/post-get-all",
+        "api-reference/rules/rule/put-put"
+      ]
+    },
+    {
+      "group": "Smart Contract",
+      "pages": [
+        {
+          "group": "Global Settings",
+          "pages": [
+            "api-reference/smart-contract/Global-Settings/get-all-settings-by-tenant-id",
+            "api-reference/smart-contract/Global-Settings/update-setting"
+          ]
+        },
+        {
+          "group": "Rules",
+          "pages": [
+            "api-reference/smart-contract/rules/create-rule",
+            "api-reference/smart-contract/rules/Delete-rule",
+            "api-reference/smart-contract/rules/Get-All-Rule-By-Tenant-Id",
+            "api-reference/smart-contract/rules/get-rules-by-tenant-id-and-operation-type",
+            "api-reference/smart-contract/rules/update-rule"
+          ]
+        },
+        {
+          "group": "Smart Contract",
+          "pages": [
+            "api-reference/smart-contract/smart-contract/bulk-reserve-tokens-by-order-id",
+            "api-reference/smart-contract/smart-contract/Generate-Address",
+            "api-reference/smart-contract/smart-contract/Generate-Transaction-History-By-Status",
+            "api-reference/smart-contract/smart-contract/Generate-Transaction-History-Sum-By-Status",
+            "api-reference/smart-contract/smart-contract/Generate-Transaction-History",
+            "api-reference/smart-contract/smart-contract/Get-Block-Chain-Transaction-History",
+            "api-reference/smart-contract/smart-contract/get-transaction-history-by-customer-id",
+            "api-reference/smart-contract/smart-contract/post-transfer-usdt-to-escrow",
+            "api-reference/smart-contract/smart-contract/Reserve-Tokens",
+            "api-reference/smart-contract/smart-contract/Swap-Token-for-USDT",
+            "api-reference/smart-contract/smart-contract/Transfer-To-Ethereum",
+            "api-reference/smart-contract/smart-contract/Transfer-Tokens-To-Merchants-1",
+            "api-reference/smart-contract/smart-contract/Transfer-Tokens-To-Merchants-2",
+            "api-reference/smart-contract/smart-contract/Transfer-Tokens-To-Merchants-3",
+            "api-reference/smart-contract/smart-contract/Transfer-Tokens-To-Merchants",
+            "api-reference/smart-contract/smart-contract/transfer-usdt-fron-escrow-contract-to-public-id",
+            "api-reference/smart-contract/smart-contract/Validate-USDT-Transfer"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Wallet",
+      "pages": [
+        {
+          "group": "Admin",
+          "pages": [
+            "api-reference/wallet/Admin/Approve-Order",
+            "api-reference/wallet/Admin/Bulk-Withdraw-Confirm",
+            "api-reference/wallet/Admin/Complete-Withdraw-Order",
+            "api-reference/wallet/Admin/Get-All-Kraken-Ledger-Info-Query",
+            "api-reference/wallet/Admin/get-customer-web3-eth-available-balance",
+            "api-reference/wallet/Admin/Get-Customers-Order-History",
+            "api-reference/wallet/Admin/Get-Deposit-AND-Withdraw-Order-History",
+            "api-reference/wallet/Admin/Get-Smart-Coin-Wallet-Available-Balance",
+            "api-reference/wallet/Admin/Get-Tenant-Order-History",
+            "api-reference/wallet/Admin/Get-Tenant-Spot-Trading-Available-Balance-1",
+            "api-reference/wallet/Admin/Get-Tenant-Spot-Trading-Available-Balance",
+            "api-reference/wallet/Admin/Get-Trading-Order-History",
+            "api-reference/wallet/Admin/post-web3-transfer"
+          ]
+        },
+        {
+          "group": "Allowed Operation",
+          "pages": [
+            "api-reference/wallet/Allowed-Operation/Change-operation-status-by-Id",
+            "api-reference/wallet/Allowed-Operation/Create-new-operation",
+            "api-reference/wallet/Allowed-Operation/Get-operation-by-id",
+            "api-reference/wallet/Allowed-Operation/Update-new-operation",
+            "api-reference/wallet/Allowed-Operation/Get-operations-by-assetId"
+          ]
+        },
+        {
+          "group": "Assets",
+          "pages": [
+            "api-reference/wallet/assets/Create-Asset",
+            "api-reference/wallet/Assets/Get-Percent-of-the-avaiable-balanece-for-trading",
+            "api-reference/wallet/Assets/Get-Customer-funds",
+            "api-reference/wallet/Assets/Update-asset-by-Id",
+            "api-reference/wallet/Assets/Update-Asset-Status"
+          ]
+        },
+        {
+          "group": "Currency",
+          "pages": [
+            "api-reference/wallet/Currency/Add-currency",
+            "api-reference/wallet/Currency/Get-all-currencies",
+            "api-reference/wallet/Currency/Get-currency-by-id"
+          ]
+        },
+        {
+          "group": "Currency Pairs",
+          "pages": [
+            "api-reference/wallet/Currency-Pairs/Create-new-currency-pairs",
+            "api-reference/wallet/Currency-Pairs/Delete-currency-pair",
+            "api-reference/wallet/Currency-Pairs/Get-all-currency-pairs"
+          ]
+        },
+        {
+          "group": "Dashboard",
+          "pages": [
+            "api-reference/wallet/Dashboard/Get-Total-Balance-Aggregate",
+            "api-reference/wallet/Dashboard/Get-Total-Balance-Series"
+          ]
+        },
+        {
+          "group": "Fee",
+          "pages": [
+            "api-reference/wallet/Fee/Create-New-fee",
+            "api-reference/wallet/Fee/Update-Fee"
+          ]
+        },
+        {
+          "group": "Limit",
+          "pages": [
+            "api-reference/wallet/Limit/Create-Limit",
+            "api-reference/wallet/Limit/Update-Limit"
+          ]
+        },
+        {
+          "group": "Misc",
+          "pages": [
+            "api-reference/wallet/Misc/Create-Bank-Detail",
+            "api-reference/wallet/Misc/Delete-Misc",
+            "api-reference/wallet/Misc/get-bank-detail-by-customer-id",
+            "api-reference/wallet/Misc/Get-Tenant-Bank-Account",
+            "api-reference/wallet/Misc/Update-Bank-Detail"
+          ]
+        },
+        {
+          "group": "Operation Address",
+          "pages": [
+            "api-reference/wallet/operation-address/create-opration-destination-address",
+            "api-reference/wallet/operation-address/update-opration-destination-address"
+          ]
+        },
+        {
+          "group": "Operation Destination",
+          "pages": [
+            "api-reference/wallet/operation-destination/create-opration-destination",
+            "api-reference/wallet/operation-destination/update-opration-destination"
+          ]
+        },
+        {
+          "group": "Order",
+          "pages": [
+            "api-reference/wallet/Order/cancel-the-irder-by-id",
+            "api-reference/wallet/Order/Create-Order-Status",
+            "api-reference/wallet/Order/Create-Order",
+            "api-reference/wallet/Order/Delete-trading-Order",
+            "api-reference/wallet/Order/Get-all-Orders",
+            "api-reference/wallet/Order/Get-kracker-closed-orders",
+            "api-reference/wallet/Order/Get-kraken-open-orders",
+            "api-reference/wallet/Order/Get-Opened-Orders",
+            "api-reference/wallet/Order/Get-Order-History",
+            "api-reference/wallet/Order/get-orders",
+            "api-reference/wallet/Order/Get-Trade-History",
+            "api-reference/wallet/Order/Get-Trading-Order-Detail"
+          ]
+        },
+        {
+          "group": "Transactions",
+          "pages": [
+            "api-reference/wallet/Transactions/Create-a-new-Transaction-history",
+            "api-reference/wallet/Transactions/Get-All-Transactions-By-Id",
+            "api-reference/wallet/Transactions/Get-All-Transactions",
+            "api-reference/wallet/Transactions/Get-Transaction-by-Id",
+            "api-reference/wallet/Transactions/Get-Transaction-history"
+          ]
+        },
+        {
+          "group": "Wallets",
+          "pages": [
+            "api-reference/wallet/Wallets/Create-new-Wallet",
+            "api-reference/wallet/Wallets/get-buisness-account-customer-wallets-by-organization-id",
+            "api-reference/wallet/Wallets/Get-wallet-by-id",
+            "api-reference/wallet/Wallets/Get-Wallet",
+            "api-reference/wallet/Wallets/get-wallets-by-customer-id"
+          ]
+        }
+      ]
+    }
+  ]
+}

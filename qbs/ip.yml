@@ -1,0 +1,21 @@
+openapi: 3.0.1
+info:
+  title: ip
+  description: Ip
+  version: 1.0.0
+servers:
+- url: https://gateway.finhub.cloud/ip
+paths:
+  /{ipAddress}/details:
+    get:
+      parameters:
+      - name: ipAddress
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response

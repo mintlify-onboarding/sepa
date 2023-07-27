@@ -1,0 +1,553 @@
+openapi: 3.0.1
+info:
+  title: KYC
+  description: kyc
+  version: 1.0.0
+servers:
+  - url: 'https://gateway.gerardjames.com/kyc'
+paths:
+  /authorize:
+    post:
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/authorizationRequest'
+            example:
+              login: 1234-rft5-yt67-uy65-3e4r5g678
+              password: dfsd667ujhgjj8978987
+        required: true
+      responses:
+        default:
+          description: Default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/authorizationResponse'
+              example:
+                access_token: >-
+                  eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjRlN2EzZTk3OTk2ODRlNWViMjJhMGQ5MjE0Yjc3NjUzIn0.eyJhdWQiOlsiN2RhMzhkYTUtODZkNC00YTBmLTlhMTctNTQyNWE5MTA1ZWZkIl0sInN1YiI6IjdkYTM4ZGE1LTg2ZDQtNGEwZi05YTE3LTU0MjVhOTEwNWVm
+                token_type: bearer
+                expires_in: 1859
+                scope: >-
+                  SEPA_ID_API SEPA_ID_API_SCAN SEPA_ID_API_SCAN_PASSPORT
+                  SEPA_ID_API_READ SEPA_ID_API_READ_PASSPORT SEPA_ID_API_FACE
+                  SEPA_ID_API_INFO SEPA_ID_API_EVENT
+                  SEPA_ID_API_BACKGROUND_CHECK SEPA_ID_API_BACKGROUND_CHECK_RDC
+                jti: Lln94OVRC-sXyR60olHHu5i46oc
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /scanDocuments:
+    post:
+      parameters:
+        - name: X-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: authentication token from /authorize response
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScanRequest'
+            example:
+              country: UAE
+              documentType: PASSPORT
+              frontImage: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDA'
+              backImage: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDA'
+              disableExpiryValidation: true
+              exportFaceImage: false
+              startSession: true
+        required: true
+      responses:
+        default:
+          description: Default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScanResponse'
+              example:
+                requireManualReview: true
+                sessionId: e63fd1c3-07a4-4b86-84dc-e93289ab3eda
+                front:
+                  secondaryId: MARIA
+                  primaryId: DELA CRUZ
+                  dateOfBirth: '800316'
+                  dateOfExpiry: '210626'
+                  documentNumber: P0000000A
+                  nationality: PHL
+                  issuer: PHL
+                  sex: F
+                  documentCode: P
+                  mrzText: |-
+                    P<PHLDELA<CRUZ<<MARIA<<<<<<<<<<<<<<<<<<<<<<<
+                    P0000000A0PHL8003166F2106269<<<<<<<<<<<<<<02
+                  mrzVerified: false
+                  chipAvailable: true
+                back: {}
+                analysis:
+                  front:
+                    copy: 100
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /face:
+    post:
+      parameters:
+        - name: X-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: authentication token from /authorize response
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FaceRequest'
+            example:
+              idPhoto: 'data:image/png;base64,/9j/4AAQSkZJRgABAgAAAQABAAD'
+        required: false
+      responses:
+        default:
+          description: Default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FaceResponse'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /getInfo:
+    post:
+      parameters:
+        - name: X-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: authentication token from /authorize response
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentInfoRequest'
+            example:
+              sessionId: eb8653f4-9fb9-4e8e-945c-6f01620d722d
+        required: false
+      responses:
+        default:
+          description: Default response (JWT Token))
+          content:
+            text/plain:
+              example: >-
+                eyJraWQiOiJlNDliOWY5NzE1NzQ0NTViYTk2OWIyMDY5N2EyYzdiNiIsImFsZyI6IlJTMjU2In0.eyJhdWQiOiJhM2Y2NmY3OS0zYzI5LTQ0NWUtYjA0Ni02MzA5NWQ3MWNhYzAiLCJkYXRhIjp7ImRvY3VtZW50cyI6W3siZmFjZSI6bnVsbCwiZG9jdW1lbnRUeXBlIjoiUEFTU1BPUlQiLCJzY2FuIjp7ImVkaXRlZCI6ZmFsc2UsImZhY2VJbWFnZUlkIjpudWxsLCJmcm9udEltYWdlSWQiOiI2MjI2ZTUxNTVkYzJmNDY5ZmE2MjlhOGMiLCJiYWNrIjp7fSwiZnJvbnQiOnsiZG9jdW1lbnRDb2RlIjoiUCIsImRhdGVPZkV4cGlyeSI6IjIxMDYyNiIsInNlY29uZGFyeUlkIjoiTUFSSUEiLCJjaGlwQXZhaWxhYmxlIjp0cnVlLCJkb2N1bWVudE51bWJlciI6IlAwMDAwMDAwQSIsInNleCI6IkYiLCJkYXRlT2ZCaXJ0aCI6IjgwMDMxNiIsIm9wdDEiOiIiLCJwcmltYXJ5SWQiOiJERUxBIENSVVoiLCJtcnpUZXh0IjoiUDxQSExERUxBPENSVVo8PE1BUklBPDw8PDw8PDw8PDw8PDw8PDw8PDw8PDxcblAwMDAwMDAwQTBQSEw4MDAzMTY2RjIxMDYyNjk8PDw8PDw8PDw8PDw8PDAyIiwiaXNzdWVyIjoiUEhMIiwibmF0aW9uYWxpdHkiOiJQSEwiLCJtcnpWZXJpZmllZCI6ZmFsc2V9LCJiYWNrSW1hZ2VJZCI6IjYyMjZlNTE1NWRjMmY0NjlmYTYyOWE4ZCJ9LCJyZWFkaW5nIjpudWxsfV19LCJpc3MiOiJodHRwczpcL1wvaWQudXF1ZG8uaW8iLCJleHAiOjE2NDY3MTgyMDgsImlhdCI6MTY0NjcxNjQwOCwianRpIjoiM2ZkZWQwZWItN2Y5OS00M2I4LTlhNTItNjY2MzA3YWU4ODVlIn0.H3-IHxklMxvyCsYappA9SULu253g0Um79nUGGFFp2zMSI4ipzUyFiCLLpMj3An0hru2NsPu1gIYSOa1jBDoqr_ZTB5L69UQprwd3mr9fDOptmhG75SCKqVKKR3KwNRbnsnw0wZ8G3sI7nFeJjF3aaO36VU_-ojQl1J-Mew3r5MRCo86AfQUXm11e_hWyPvHw2UnvJ8f5_Xnt1AU6UR6pnY_aOKlTnUBehSKWMGVopZPkWqx6umdVjF2E9uoxAQVezW_WmG40Hp4lPbhuyPcJnGqRMSboWs5K9TB422_eKpIjsZxwpx74w3TGigffqeo4xFzFM5wDoTYY6iD3K9Zz-w
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /deleteInfo:
+    post:
+      parameters:
+        - name: X-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: authentication token from /authorize response
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteInfoRequest'
+            example:
+              sessionId: eb8653f4-9fb9-4e8e-945c-6f01620d722d
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /backgroundcheck:
+    put:
+      parameters:
+        - name: x-token
+          in: header
+          description: autorization token to be passed as a header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                enableMonitoring: 'false'
+                sessionId: 77a91f1a-bb29-410a-9d35-7ca04549586c
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+    post:
+      parameters:
+        - name: x-token
+          in: header
+          description: autorization token to be passed as a header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                enableMonitoring: 'false'
+                fullName: MARIA DELA CRUZ
+                gender: F
+                dateOfBirth: '1970-01-01'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /uploadImage:
+    post:
+      parameters:
+        - name: x-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: authentication token from /authorize response
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadRequest'
+        required: false
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadResponse'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+components:
+  schemas:
+    authorizationRequest:
+      required:
+        - login
+        - password
+      type: object
+      properties:
+        login:
+          type: string
+        password:
+          type: string
+    authorizationResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: string
+        scope:
+          type: string
+        jti:
+          type: string
+    ScanRequest:
+      required:
+        - disableExpiryValidation
+        - documentType
+        - exportFaceImage
+        - frontImage
+      type: object
+      properties:
+        country:
+          type: string
+          enum:
+            - UAE
+            - OMN
+            - PAK
+            - SAU
+            - BHR
+            - KWT
+            - QAT
+            - NLD
+            - OTHER
+        documentType:
+          type: string
+          enum:
+            - PASSPORT
+            - ID
+            - DRIVER_LICENCE
+            - VEHICLE_LICENCE
+            - VISA_DOCUMENT
+            - SELFIE
+            - UTILITY_BILL
+            - PROOF_OF_RESIDENCE
+            - BANK_STATEMENT
+        frontImage:
+          type: string
+          format: binary
+        backImage:
+          type: string
+          format: binary
+        disableExpiryValidation:
+          type: boolean
+        exportFaceImage:
+          type: boolean
+        startSession:
+          type: boolean
+    ScanResponse:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        front:
+          type: object
+          properties:
+            secondaryId:
+              type: string
+            primaryId:
+              type: string
+            dateOfBirth:
+              type: string
+            dateOfExpiry:
+              type: string
+            documentNumber:
+              type: string
+            nationality:
+              type: string
+            issuer:
+              type: string
+            sex:
+              type: string
+            documentCode:
+              type: string
+            mrzText:
+              type: string
+            mrzVerified:
+              type: boolean
+            chipAvailable:
+              type: boolean
+        back:
+          type: object
+          properties:
+            secondaryId:
+              type: string
+            primaryId:
+              type: string
+            dateOfBirth:
+              type: string
+            dateOfExpiry:
+              type: string
+            documentNumber:
+              type: string
+            nationality:
+              type: string
+            issuer:
+              type: string
+            sex:
+              type: string
+            documentCode:
+              type: string
+            mrzText:
+              type: string
+            mrzVerified:
+              type: boolean
+            chipAvailable:
+              type: boolean
+        analysis:
+          type: object
+          properties:
+            front:
+              type: object
+              properties:
+                copy:
+                  type: integer
+            'back:':
+              type: object
+              properties:
+                copy:
+                  type: integer
+    FaceRequest:
+      required:
+        - idPhoto
+      type: object
+      properties:
+        idPhoto:
+          type: string
+    FaceResponse:
+      type: object
+      properties:
+        idPhoto:
+          type: string
+    DocumentInfoRequest:
+      required:
+        - sessionId
+      type: object
+      properties:
+        sessionId:
+          type: string
+    DeleteInfoRequest:
+      required:
+        - sessionId
+      type: object
+      properties:
+        sessionId:
+          type: string
+    UploadRequest:
+      required:
+        - sessionId
+      type: object
+      properties:
+        purpose:
+          type: string
+        imageData:
+          $ref: '#/components/schemas/image'
+        metaData:
+          $ref: '#/components/schemas/meta'
+        organizationId:
+          type: string
+    UploadResponse:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+    image:
+      properties:
+        id_front_side:
+          type: string
+        id_back_side:
+          type: string
+        selfie:
+          type: string
+        passport:
+          type: string
+    meta:
+      properties:
+        type:
+          type: string
+        value:
+          $ref: '#/components/schemas/metaDetail'
+    metaDetail:
+      properties:
+        customerId:
+          type: string
+        aud:
+          type: string
+        data:
+          type: string
+  securitySchemes:
+    default:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'https://test.com'
+          scopes: {}
+x-wso2-auth-header: Authorization
+x-wso2-cors:
+  corsConfigurationEnabled: true
+  accessControlAllowOrigins:
+    - '*'
+  accessControlAllowCredentials: false
+  accessControlAllowHeaders:
+    - authorization
+    - Access-Control-Allow-Origin
+    - Content-Type
+    - SOAPAction
+    - apikey
+    - Internal-Key
+  accessControlAllowMethods:
+    - GET
+    - PUT
+    - POST
+    - DELETE
+    - PATCH
+    - OPTIONS
+x-wso2-production-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/kyc'
+  type: http
+x-wso2-sandbox-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/kyc'
+  type: http
+x-wso2-basePath: /kyc/1.0.0
+x-wso2-transports:
+  - http
+  - https
+x-wso2-response-cache:
+  enabled: false
+  cacheTimeoutInSeconds: 300

@@ -1,0 +1,51 @@
+openapi: 3.0.1
+info:
+  title: country
+  description: Country
+  version: 1.0.0
+servers:
+- url: https://gateway.finhub.cloud/country
+paths:
+  /countryData:
+    post:
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetCountryDataRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+  /listData:
+    post:
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetListDataRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+components:
+  schemas:
+    GetCountryDataRequest:
+      required:
+      - country
+      - tenantId
+      type: object
+      properties:
+        tenantId:
+          type: string
+        country:
+          type: string
+    GetListDataRequest:
+      required:
+      - tenantId
+      type: object
+      properties:
+        tenantId:
+          type: string

@@ -1,0 +1,875 @@
+openapi: 3.0.1
+info:
+  title: kyb
+  description: kyb
+  version: 1.0.0
+servers:
+  - url: 'https://gateway.varchev.com/kyb'
+security:
+  - default: []
+paths:
+  /countries:
+    get:
+      tags:
+        - System
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /pricelist:
+    get:
+      tags:
+        - System
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /health:
+    get:
+      tags:
+        - System
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /details:
+    post:
+      tags:
+        - Company
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DetailsRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /find:
+    post:
+      tags:
+        - Company
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /findByCountryAndRegNumber:
+    post:
+      tags:
+        - Company
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindByCountryAndRegNumberRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /findByCountryAndName:
+    post:
+      tags:
+        - Company
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindByCountryAndNameRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /ubo:
+    post:
+      tags:
+        - Product
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UBODiscoveryRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /ubo/update:
+    post:
+      tags:
+        - Product
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UBOUpdateRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /ubo/retrive:
+    post:
+      tags:
+        - Product
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UBORetriveRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /vat-verification/lookup:
+    post:
+      tags:
+        - Vat Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VatVerificationLookupRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /vat-verification/basic-check:
+    post:
+      tags:
+        - Vat Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VatVerificationBasicCheckRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /vat-verification/leveltwo-check:
+    post:
+      tags:
+        - Vat Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VatVerificationLevelTwoCheckRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /vat-verification/comprehensive-check:
+    post:
+      tags:
+        - Vat Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VatVerificationComprehensiveCheckRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /nif-verification/basic-check:
+    post:
+      tags:
+        - NIF Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NIFVerificationBasicCheckRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /nif-verification/comprehensive-check:
+    post:
+      tags:
+        - NIF Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NIFVerificationComprehensiveCheckRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /ein-verification/lookup:
+    post:
+      tags:
+        - EIN Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EINVerificationLookupRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /ein-verification/basic-check:
+    post:
+      tags:
+        - EIN Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EINVerificationBasicCheckRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /ein-verification/comprehensive-check:
+    post:
+      tags:
+        - EIN Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EINVerificationComprehensiveCheckRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /tin-verification/name-lookup:
+    post:
+      tags:
+        - TIN Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TINVerificationNameLookupRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /tin-verification/basic-check:
+    post:
+      tags:
+        - TIN Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TINVerificationBasicCheckRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /tin-verification/comprehensive-check:
+    post:
+      tags:
+        - TIN Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TINVerificationComprehensiveCheckRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /iban-verification/check:
+    post:
+      tags:
+        - IBAN Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IBANVerificationCheckRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /iban-verification/comprehensive-check:
+    post:
+      tags:
+        - IBAN Verification
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IBANVerificationComprehensiveCheckRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /isin-search:
+    post:
+      tags:
+        - Company
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ISINSearchRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /lei-search:
+    post:
+      tags:
+        - Company
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LEISearchRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /search-company/super:
+    post:
+      tags:
+        - Company
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchCompanySuperRequest'
+        required: false
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/company/{companyId}/{dataset}':
+    get:
+      tags:
+        - Company
+      parameters:
+        - name: companyId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: dataset
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Dataset'
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/company/deepsearch/name/{country}/{name}':
+    get:
+      tags:
+        - Company
+      parameters:
+        - name: country
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: name
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/company/deepsearch/number/{country}/{number}':
+    get:
+      tags:
+        - Company
+      parameters:
+        - name: country
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: number
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default response
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+components:
+  schemas:
+    Dataset:
+      type: string
+      enum:
+        - mini
+        - master
+        - full
+        - refresh
+        - beneficial_owners
+    DetailsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        country:
+          type: string
+        street:
+          type: string
+        regNumber:
+          type: string
+    FindRequest:
+      type: object
+      properties:
+        registrationNumber:
+          type: string
+        country:
+          type: string
+    FindByCountryAndRegNumberRequest:
+      type: object
+      properties:
+        country:
+          type: string
+        regNumber:
+          type: string
+    FindByCountryAndNameRequest:
+      type: object
+      properties:
+        country:
+          type: string
+        name:
+          type: string
+    UBODiscoveryRequest:
+      type: object
+      properties:
+        subjectId:
+          type: string
+    UBOUpdateRequest:
+      type: object
+      properties:
+        orderId:
+          type: string
+        actions:
+          type: string
+        credits:
+          type: integer
+    UBORetriveRequest:
+      type: object
+      properties:
+        orderId:
+          type: string
+    VatVerificationLookupRequest:
+      type: object
+      properties:
+        country:
+          type: string
+        name:
+          type: string
+    VatVerificationBasicCheckRequest:
+      type: object
+      properties:
+        country:
+          type: string
+        vatNumber:
+          type: string
+        companyName:
+          type: string
+        companyNumber:
+          type: string
+        companyAddress:
+          type: string
+    VatVerificationLevelTwoCheckRequest:
+      type: object
+      properties:
+        country:
+          type: string
+        vatNumber:
+          type: string
+        confirmation:
+          type: string
+    VatVerificationComprehensiveCheckRequest:
+      type: object
+      properties:
+        country:
+          type: string
+        vatNumber:
+          type: string
+        companyName:
+          type: string
+        companyNumber:
+          type: string
+        companyAddress:
+          type: string
+    NIFVerificationBasicCheckRequest:
+      type: object
+      properties:
+        country:
+          type: string
+        nifNumber:
+          type: string
+        companyName:
+          type: string
+        companyAddress:
+          type: string
+    NIFVerificationComprehensiveCheckRequest:
+      type: object
+      properties:
+        nifNumber:
+          type: string
+        companyName:
+          type: string
+        companyAddress:
+          type: string
+    EINVerificationLookupRequest:
+      type: object
+      properties:
+        name:
+          type: string
+    EINVerificationBasicCheckRequest:
+      type: object
+      properties:
+        ein:
+          type: string
+    EINVerificationComprehensiveCheckRequest:
+      type: object
+      properties:
+        ein:
+          type: string
+    TINVerificationNameLookupRequest:
+      type: object
+      properties:
+        tin:
+          type: string
+    TINVerificationBasicCheckRequest:
+      type: object
+      properties:
+        tin:
+          type: string
+        name:
+          type: string
+    TINVerificationComprehensiveCheckRequest:
+      type: object
+      properties:
+        tin:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+    IBANVerificationCheckRequest:
+      type: object
+      properties:
+        ibanNumber:
+          type: string
+    IBANVerificationComprehensiveCheckRequest:
+      type: object
+      properties:
+        ibanNumber:
+          type: string
+    ISINSearchRequest:
+      type: object
+      properties:
+        isin:
+          type: string
+    LEISearchRequest:
+      type: object
+      properties:
+        lei:
+          type: string
+        page:
+          type: string
+    SearchCompanySuperRequest:
+      type: object
+      properties:
+        country:
+          type: string
+        companyId:
+          type: string
+  securitySchemes:
+    default:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'https://test.com'
+          scopes: {}
+x-wso2-auth-header: Authorization
+x-wso2-cors:
+  corsConfigurationEnabled: true
+  accessControlAllowOrigins:
+    - '*'
+  accessControlAllowCredentials: false
+  accessControlAllowHeaders:
+    - authorization
+    - Access-Control-Allow-Origin
+    - Content-Type
+    - SOAPAction
+    - apikey
+    - Internal-Key
+  accessControlAllowMethods:
+    - GET
+    - PUT
+    - POST
+    - DELETE
+    - PATCH
+    - OPTIONS
+x-wso2-production-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/kyb'
+  type: http
+x-wso2-sandbox-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/kyb'
+  type: http
+x-wso2-basePath: /kyb/1.0.0
+x-wso2-transports:
+  - http
+  - https
+x-wso2-response-cache:
+  enabled: false
+  cacheTimeoutInSeconds: 300

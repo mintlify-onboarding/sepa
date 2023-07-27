@@ -1,0 +1,474 @@
+openapi: 3.0.1
+info:
+  title: Rules
+  description: Rule
+  version: 1.0.0
+servers:
+  - url: 'https://gateway.cyrexa.com/rules'
+security:
+  - default: []
+paths:
+  '/get/{ruleId}':
+    get:
+      tags:
+        - Rule
+      parameters:
+        - name: tenantId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: ruleId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetRuleByIdResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetRuleByIdResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetRuleByIdResponseDto'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  '/put/{ruleId}':
+    put:
+      tags:
+        - Rule
+      parameters:
+        - name: tenantId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: ruleId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRuleRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRuleRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateRuleRequestDto'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetRuleByIdResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetRuleByIdResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetRuleByIdResponseDto'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /get-all:
+    post:
+      tags:
+        - Rule
+      parameters:
+        - name: tenantId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetAllRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GetAllRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GetAllRequestDto'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetAllResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetAllResponseDto'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+  /filter:
+    post:
+      tags:
+        - Rule
+      parameters:
+        - name: tenantId
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilterRequestDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FilterRequestDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FilterRequestDto'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetRuleByIdResponseDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetRuleByIdResponseDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetRuleByIdResponseDto'
+      security:
+        - default: []
+      x-throttling-tier: Unlimited
+      x-auth-type: Application & Application User
+      x-wso2-application-security:
+        security-types:
+          - oauth2
+        optional: false
+components:
+  schemas:
+    FilterRequestDto:
+      type: object
+      properties:
+        module:
+          type: string
+          nullable: true
+        category:
+          type: string
+          nullable: true
+        subCategory:
+          type: string
+          nullable: true
+        baseAmount:
+          type: integer
+          format: int32
+        currency:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GetAllRequestDto:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        created:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        pageSize:
+          type: integer
+          format: int32
+        pageNumber:
+          type: integer
+          format: int32
+      additionalProperties: false
+    GetAllResponseDto:
+      type: object
+      properties:
+        data:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/GetRuleByIdResponseDto'
+        pagination:
+          $ref: '#/components/schemas/PaginationResponseDto'
+      additionalProperties: false
+    GetRuleByIdResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        tenantId:
+          type: string
+          nullable: true
+        module:
+          type: string
+          nullable: true
+        category:
+          type: string
+          nullable: true
+        subCategory:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        subjectIdentifier:
+          type: string
+          nullable: true
+        subjectGroup:
+          type: string
+          nullable: true
+        effectiveStartDate:
+          type: string
+          nullable: true
+        effectiveEndDate:
+          type: string
+          nullable: true
+        ruleCycle:
+          type: string
+          nullable: true
+        active:
+          type: boolean
+        isDeleted:
+          type: boolean
+        structure:
+          $ref: '#/components/schemas/StructureResponseDto'
+        ruleDetail:
+          $ref: '#/components/schemas/RuleDetailResponseDto'
+      additionalProperties: false
+    PaginationResponseDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalSize:
+          type: integer
+          format: int32
+        numberOfPage:
+          nullable: true
+      additionalProperties: false
+    RuleDetailRequestDto:
+      type: object
+      properties:
+        maximum:
+          type: integer
+          format: int32
+        minimum:
+          type: integer
+          format: int32
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        value:
+          type: integer
+          format: int32
+      additionalProperties: false
+    RuleDetailResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        tenantId:
+          nullable: true
+        maximum:
+          type: integer
+          format: int32
+        minimum:
+          type: integer
+          format: int32
+        startDate:
+          type: string
+          nullable: true
+        endDate:
+          type: string
+          nullable: true
+        value:
+          type: integer
+          format: int32
+      additionalProperties: false
+    StructureRequestDto:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    StructureResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        tenantId:
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+        description:
+          nullable: true
+      additionalProperties: false
+    UpdateRuleRequestDto:
+      type: object
+      properties:
+        module:
+          type: string
+          nullable: true
+        category:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        structure:
+          $ref: '#/components/schemas/StructureRequestDto'
+        subCategory:
+          type: string
+          nullable: true
+        subjectIdentifier:
+          type: string
+          nullable: true
+        subjectGroup:
+          type: string
+          nullable: true
+        effectiveStartDate:
+          type: string
+          format: date-time
+        effectiveEndDate:
+          type: string
+          format: date-time
+        ruleCycle:
+          type: string
+          nullable: true
+        ruleDetail:
+          $ref: '#/components/schemas/RuleDetailRequestDto'
+      additionalProperties: false
+  securitySchemes:
+    default:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'https://test.com'
+          scopes: {}
+x-wso2-auth-header: Authorization
+x-wso2-cors:
+  corsConfigurationEnabled: true
+  accessControlAllowOrigins:
+    - '*'
+  accessControlAllowCredentials: false
+  accessControlAllowHeaders:
+    - authorization
+    - Access-Control-Allow-Origin
+    - Content-Type
+    - SOAPAction
+    - apikey
+    - Internal-Key
+  accessControlAllowMethods:
+    - GET
+    - PUT
+    - POST
+    - DELETE
+    - PATCH
+    - OPTIONS
+x-wso2-production-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/rules'
+  type: http
+x-wso2-sandbox-endpoints:
+  urls:
+    - 'https://endpoint-sandbox.local.sepa-cyber.com/rules'
+  type: http
+x-wso2-basePath: /rules/1.0.0
+x-wso2-transports:
+  - http
+  - https
+x-wso2-response-cache:
+  enabled: false
+  cacheTimeoutInSeconds: 300
